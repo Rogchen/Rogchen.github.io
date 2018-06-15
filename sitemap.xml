@@ -2,30 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rogchen.github.com/2018/06/15/hello-world/</loc>
+    
+    <lastmod>2018-06-15T08:28:03.794Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rogchen.github.com/photos/index.html</loc>
     
     <lastmod>2018-06-15T07:34:20.922Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rogchen.github.com/2018/06/15/tags/tag/123/</loc>
-    
-    <lastmod>2018-06-15T07:19:44.131Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rogchen.github.com/2018/06/15/new-page/</loc>
-    
-    <lastmod>2018-06-15T07:17:59.814Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rogchen.github.com/2018/06/15/hello-world/</loc>
-    
-    <lastmod>2018-06-15T07:04:28.576Z</lastmod>
     
   </url>
   
