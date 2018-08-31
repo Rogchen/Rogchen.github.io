@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://rogchen.github.com/2018/06/15/hello-world/</loc>
-    <lastmod>2018-08-31T02:55:03.925Z</lastmod>
+    <lastmod>2018-08-31T03:19:35.416Z</lastmod>
     <data>
         <display>
         <title>Hello World</title>
@@ -22,12 +22,14 @@
     
   <url>
     <loc>https://rogchen.github.com/2018/08/29/rogchen-md/</loc>
-    <lastmod>2018-08-31T02:53:14.379Z</lastmod>
+    <lastmod>2018-08-31T03:18:10.000Z</lastmod>
     <data>
         <display>
-        <title></title>
+        <title>Rogchen-md学习</title>
         <pubTime>2018-08-29T13:15:06.442Z</pubTime>
         
+        <tag>md</tag>
+         
          
            
         </display>
