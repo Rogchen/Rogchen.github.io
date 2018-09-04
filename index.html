@@ -164,6 +164,112 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-logger-Info" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/logger-Info/">通过注解和拦截器或aop实现日志</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/02/logger-Info/" class="archive-article-date">
+  	<time datetime="2018-09-02T11:36:44.563Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、使用注解和拦截器"><a href="#一、使用注解和拦截器" class="headerlink" title="一、使用注解和拦截器"></a>一、使用注解和拦截器</h1><hr>
+<h3 id="为什么使用拦截器而不是用过滤器呢？"><a href="#为什么使用拦截器而不是用过滤器呢？" class="headerlink" title="为什么使用拦截器而不是用过滤器呢？"></a>为什么使用拦截器而不是用过滤器呢？</h3><ul>
+<li>拦截器是基于Java的反射机制的，而过滤器是基于函数回调。</li>
+<li>拦截器不依赖与servlet容器，过滤器依赖与servlet容器。</li>
+<li>拦截器可以获取IOC容器中的各个bean，而过滤器就不行，这点很重要，在拦截器里注入一个service，可以调用业务逻辑。</li>
+<li>拦截器可以访问action上下文、值栈里的对象。</li>
+</ul>
+<h2 id="1、添加注解"><a href="#1、添加注解" class="headerlink" title="1、添加注解"></a>1、添加注解</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">@Target</span>(ElementType.METHOD)			<span class="comment">//方法级别-更多可自行查阅</span></span><br><span class="line"><span class="variable">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="variable">@Documented</span></span><br><span class="line"><span class="variable">@Inherited</span></span><br><span class="line">public <span class="variable">@interface</span> LogRecordAno &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2、添加拦截器"><a href="#2、添加拦截器" class="headerlink" title="2、添加拦截器"></a>2、添加拦截器</h2><h4 id="根据自己的开发环境选择拦截器的注册方式"><a href="#根据自己的开发环境选择拦截器的注册方式" class="headerlink" title="根据自己的开发环境选择拦截器的注册方式"></a>根据自己的开发环境选择拦截器的注册方式</h4><h3 id="2-1-springmvc-版。"><a href="#2-1-springmvc-版。" class="headerlink" title="2.1 springmvc 版。"></a>2.1 springmvc 版。</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 拦截器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 指定拦截器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 指定地址 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/**"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.im.core.util.Interceptor.LogRecordInterceptor"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-2-springboot-版。"><a href="#2-2-springboot-版。" class="headerlink" title="2.2 springboot 版。"></a>2.2 springboot 版。</h2><h5 id="如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring-factories来配置类路径"><a href="#如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring-factories来配置类路径" class="headerlink" title="如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring.factories来配置类路径"></a>如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring.factories来配置类路径</h5><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">WebMvcConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public void addInterceptors(<span class="type">InterceptorRegistry</span> registry) &#123;</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> <span class="type">LogRecordInterceptor</span>()).addPathPatterns(<span class="string">"/**"</span>);</span><br><span class="line">        <span class="keyword">super</span>.addInterceptors(registry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3、拦截器的实现是需要实现HandlerInterceptor的三个方法-preHandle、afterCompletion、postHandle-。"><a href="#3、拦截器的实现是需要实现HandlerInterceptor的三个方法-preHandle、afterCompletion、postHandle-。" class="headerlink" title="3、拦截器的实现是需要实现HandlerInterceptor的三个方法(preHandle、afterCompletion、postHandle)。"></a>3、拦截器的实现是需要实现HandlerInterceptor的三个方法(preHandle、afterCompletion、postHandle)。</h2><h3 id="3-1-preHandle-请求前"><a href="#3-1-preHandle-请求前" class="headerlink" title="3.1 preHandle 请求前"></a>3.1 preHandle 请求前</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  </span></span><br><span class="line"><span class="comment">   * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，可以同时存在 </span></span><br><span class="line"><span class="comment">   * 多个Interceptor，然后SpringMVC会根据声明的前后顺序一个接一个的执行，而且所有的Interceptor中的preHandle方法都会在 </span></span><br><span class="line"><span class="comment">   * Controller方法调用之前调用。SpringMVC的这种Interceptor链式结构也是可以进行中断的，这种中断方式是令preHandle的返 </span></span><br><span class="line"><span class="comment">   * 回值为false，当preHandle的返回值为false的时候整个请求就结束了。 </span></span><br><span class="line"><span class="comment">   *      </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  @Override</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">boolean</span> preHandle(HttpServletRequest request, HttpServletResponse response, <span class="keyword">Object</span> o) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">      <span class="keyword">if</span> (o <span class="keyword">instanceof</span> HandlerMethod) &#123;</span><br><span class="line">              Method method = ((HandlerMethod) o).getMethod();</span><br><span class="line">              LogRecordAno logRecord = method.getAnnotation(LogRecordAno.class);</span><br><span class="line">              <span class="keyword">if</span> (logRecord != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="comment">// 有request就可以拿到 很多参数，这里方便写就用Map做参数容器</span></span><br><span class="line">		Map&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; properties = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt;();</span><br><span class="line">		    <span class="keyword">for</span> (<span class="keyword">Object</span> param : request.getParameterMap().keySet()) &#123;</span><br><span class="line">				properties.put(param.toString(), request.getParameter(param.toString()));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//其它的业务 逻辑</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-postHandle-请求时拦截"><a href="#3-2-postHandle-请求时拦截" class="headerlink" title="3.2 postHandle 请求时拦截"></a>3.2 postHandle 请求时拦截</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    /** </span><br><span class="line">      * 这个方法只会在当前这个Interceptor的preHandle方法返回值为<span class="keyword">true</span>的时候才会执行。postHandle是进行处理器拦截用的，它的执行时间是在处理器进行处理之 </span><br><span class="line">      * 后，也就是在Controller的方法调用之后执行，但是它会在DispatcherServlet进行视图的渲染之前执行，也就是说在这个方法中你可以对ModelAndView进行操 </span><br><span class="line">      * 作。这个方法的链式结构跟正常访问的方向是相反的，也就是说先声明的Interceptor拦截器该方法反而会后调用，这跟Struts<span class="number">2</span>里面的拦截器的执行过程有点像， </span><br><span class="line">      * 只是Struts<span class="number">2</span>里面的intercept方法中要手动的调用ActionInvocation的<span class="keyword">invoke</span>方法，Struts<span class="number">2</span>中调用ActionInvocation的<span class="keyword">invoke</span>方法就是调用下一个Interceptor </span><br><span class="line">      * 或者是调用action，然后要在Interceptor之前调用的内容都写在调用<span class="keyword">invoke</span>之前，要在Interceptor之后调用的内容都写在调用<span class="keyword">invoke</span>方法之后。 </span><br><span class="line">     */  </span><br><span class="line"><span class="title">@Override</span></span><br><span class="line">public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object</span><br><span class="line">        o, ModelAndView modelAndView) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-afterCompletion-返回拦截"><a href="#3-3-afterCompletion-返回拦截" class="headerlink" title="3.3 afterCompletion 返回拦截"></a>3.3 afterCompletion 返回拦截</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 该方法也是需要当前对应的Interceptor的preHandle方法的返回值为true时才会执行。该方法将在整个请求完成之后，也就是DispatcherServlet渲染了视图执行， </span></span><br><span class="line"><span class="comment">   * 这个方法的主要作用是用于清理资源的，当然这个方法也只能在当前这个Interceptor的preHandle方法的返回值为true时才会执行。 </span></span><br><span class="line"><span class="comment">   * url记录高于注解记录问题</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) <span class="keyword">throws</span></span><br><span class="line">          Exception &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-1-触发实现"><a href="#4-1-触发实现" class="headerlink" title="4.1 触发实现"></a>4.1 触发实现</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span>&#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="meta">@LogRecordAno</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> (String userid)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二、使用aop和注解"><a href="#二、使用aop和注解" class="headerlink" title="二、使用aop和注解"></a>二、使用aop和注解</h1><h2 id="1-添加注解（参考上面）"><a href="#1-添加注解（参考上面）" class="headerlink" title="1.添加注解（参考上面）"></a>1.添加注解（参考上面）</h2><h2 id="2-添加切面"><a href="#2-添加切面" class="headerlink" title="2.添加切面"></a>2.添加切面</h2><blockquote>
+<h3 id="2-1添加jar"><a href="#2-1添加jar" class="headerlink" title="2.1添加jar"></a>2.1添加jar</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+<h3 id="2-2采用切面来做aop处理"><a href="#2-2采用切面来做aop处理" class="headerlink" title="2.2采用切面来做aop处理"></a>2.2采用切面来做aop处理</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogAopAction</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(LogAopAction.class);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//切入点设置到自定义的log注解上---也可以切路径、通配符等</span></span><br><span class="line">    <span class="meta">@Pointcut</span>(<span class="string">"@annotation(com.rogchen.annotation.LogRecordAno)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pointCutMethod</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 记录操作日志</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@After</span>(<span class="string">"pointCutMethod()"</span>)  <span class="comment">// 使用上面定义的切入点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recordLog</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        Long newtime = System.currentTimeMillis();</span><br><span class="line">		<span class="comment">//业务逻辑代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-最终实现"><a href="#3-最终实现" class="headerlink" title="3.最终实现"></a>3.最终实现</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span>&#123;</span></span><br><span class="line">	<span class="meta">@LogRecordAno</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> (String userid)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">注解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">拦截器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/02/logger-Info/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-rogchen-md" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -482,6 +588,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">拦截器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aop</a>
               </li>
              
               <li class="article-tag-list-item">
