@@ -71,8 +71,6 @@ var _hmt = _hmt || [];
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/photos">相册</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -125,8 +123,6 @@ var _hmt = _hmt || [];
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -145,9 +141,7 @@ var _hmt = _hmt || [];
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/photos">相册</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -163,6 +157,261 @@ var _hmt = _hmt || [];
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-hexo-more" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="MarkdownViewer++">
+    <title>hexo-more.md</title>
+    <style type="text/css">
+            
+/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+td, h1, h2, h3, h4, h5, p, ul, ol, li {
+    page-break-inside: avoid; 
+}
+
+        </style>
+  </head>
+  <body>
+    <hr>
+    <p>title: 让hexo的首页只显示文章的部分内容而不是全部</p>
+    <h2 id="tags-hexo">tags:
+[hexo]</h2>
+    <pre>
+      <code>Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？
+</code>
+    </pre>
+    <p>我们通过下面的三种方式实现:</p>
+    <h2 id="section">第一种方法</h2>
+    <hr>
+    <p>用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：</p>
+    <pre>
+      <code>1 # Automatically Excerpt. Not recommend.
+2 # Please use &lt;!-- more --&gt; in the post to control excerpt accurately.
+3 auto_excerpt:
+4   enable: false
+5   length: 150
+</code>
+    </pre>
+    <p>把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。</p>
+        
+          <a class="article-more-a" href="/2018/09/09/hexo-more/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/09/hexo-more/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hexo-more" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/09/hexo-more/">让hexo的首页只显示文章的部分内容而不是全部</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/09/hexo-more/" class="archive-article-date">
+  	<time datetime="2018-09-09T08:14:55.205Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？
+</code></pre><p>我们通过下面的三种方式实现:</p>
+<h2 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h2><hr>
+<p>用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">1 </span># Automatically Excerpt. <span class="keyword">Not</span> recommend.</span><br><span class="line"><span class="symbol">2 </span># Please use &lt;!-- more --&gt; in the post <span class="keyword">to</span> control excerpt accurately.</span><br><span class="line"><span class="symbol">3 </span>auto_excerpt:</span><br><span class="line"><span class="symbol">4 </span>  enable: false</span><br><span class="line"><span class="symbol">5 </span>  length: <span class="number">150</span></span><br></pre></td></tr></table></figure>
+<p>把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。<br>
+        
+          <a class="article-more-a" href="/2018/09/09/hexo-more/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/09/hexo-more/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-linux-ll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/08/linux-ll/">在linux上安装使用ll命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/08/linux-ll/" class="archive-article-date">
+  	<time datetime="2018-09-08T02:30:19.953Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ll并不是linux下一个基本的命令，它实际上是ls -l的一个别名。<br>Ubuntu默认不支持命令ll，必须用 ls -l，这样使用起来不是很方便。<br>如果要使用此命令，可以作如下修改：</p>
+<ul>
+<li>打开 ~/.bashrc<br>找到 #alias ll=’ls -l’，去掉前面的#就可以了。（关闭原来的终端才能使命令生效）<br>这样个人用户可以使用ll命令，当切换成超级用户后，使用ll命令时提示找不到命令，那是因为你只是修改了个人用户的配置，所以，切换成root后做相同的操作即可解决问题。<br>启示：我们可以通过修改~/.bashrc添加任何其他的命令别名。</li>
+</ul>
+<h2 id="还有另外一种实现方法："><a href="#还有另外一种实现方法：" class="headerlink" title="还有另外一种实现方法："></a>还有另外一种实现方法：</h2>
+        
+          <a class="article-more-a" href="/2018/09/08/linux-ll/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ls -l</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ll</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/08/linux-ll/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-logger-Info" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -191,25 +440,9 @@ var _hmt = _hmt || [];
 <li>拦截器可以获取IOC容器中的各个bean，而过滤器就不行，这点很重要，在拦截器里注入一个service，可以调用业务逻辑。</li>
 <li>拦截器可以访问action上下文、值栈里的对象。</li>
 </ul>
-<h2 id="1、添加注解"><a href="#1、添加注解" class="headerlink" title="1、添加注解"></a>1、添加注解</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">@Target</span>(ElementType.METHOD)			<span class="comment">//方法级别-更多可自行查阅</span></span><br><span class="line"><span class="variable">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="variable">@Documented</span></span><br><span class="line"><span class="variable">@Inherited</span></span><br><span class="line">public <span class="variable">@interface</span> LogRecordAno &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="2、添加拦截器"><a href="#2、添加拦截器" class="headerlink" title="2、添加拦截器"></a>2、添加拦截器</h2><h4 id="根据自己的开发环境选择拦截器的注册方式"><a href="#根据自己的开发环境选择拦截器的注册方式" class="headerlink" title="根据自己的开发环境选择拦截器的注册方式"></a>根据自己的开发环境选择拦截器的注册方式</h4><h3 id="2-1-springmvc-版。"><a href="#2-1-springmvc-版。" class="headerlink" title="2.1 springmvc 版。"></a>2.1 springmvc 版。</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 拦截器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 指定拦截器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 指定地址 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/**"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.im.core.util.Interceptor.LogRecordInterceptor"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="2-2-springboot-版。"><a href="#2-2-springboot-版。" class="headerlink" title="2.2 springboot 版。"></a>2.2 springboot 版。</h2><h5 id="如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring-factories来配置类路径"><a href="#如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring-factories来配置类路径" class="headerlink" title="如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring.factories来配置类路径"></a>如果没法被扫描那就加扫描呗。当然也可以在META-INF下添加spring.factories来配置类路径</h5><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">WebMvcConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public void addInterceptors(<span class="type">InterceptorRegistry</span> registry) &#123;</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> <span class="type">LogRecordInterceptor</span>()).addPathPatterns(<span class="string">"/**"</span>);</span><br><span class="line">        <span class="keyword">super</span>.addInterceptors(registry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="3、拦截器的实现是需要实现HandlerInterceptor的三个方法-preHandle、afterCompletion、postHandle-。"><a href="#3、拦截器的实现是需要实现HandlerInterceptor的三个方法-preHandle、afterCompletion、postHandle-。" class="headerlink" title="3、拦截器的实现是需要实现HandlerInterceptor的三个方法(preHandle、afterCompletion、postHandle)。"></a>3、拦截器的实现是需要实现HandlerInterceptor的三个方法(preHandle、afterCompletion、postHandle)。</h2><h3 id="3-1-preHandle-请求前"><a href="#3-1-preHandle-请求前" class="headerlink" title="3.1 preHandle 请求前"></a>3.1 preHandle 请求前</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  </span></span><br><span class="line"><span class="comment">   * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，可以同时存在 </span></span><br><span class="line"><span class="comment">   * 多个Interceptor，然后SpringMVC会根据声明的前后顺序一个接一个的执行，而且所有的Interceptor中的preHandle方法都会在 </span></span><br><span class="line"><span class="comment">   * Controller方法调用之前调用。SpringMVC的这种Interceptor链式结构也是可以进行中断的，这种中断方式是令preHandle的返 </span></span><br><span class="line"><span class="comment">   * 回值为false，当preHandle的返回值为false的时候整个请求就结束了。 </span></span><br><span class="line"><span class="comment">   *      </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  @Override</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">boolean</span> preHandle(HttpServletRequest request, HttpServletResponse response, <span class="keyword">Object</span> o) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">      <span class="keyword">if</span> (o <span class="keyword">instanceof</span> HandlerMethod) &#123;</span><br><span class="line">              Method method = ((HandlerMethod) o).getMethod();</span><br><span class="line">              LogRecordAno logRecord = method.getAnnotation(LogRecordAno.class);</span><br><span class="line">              <span class="keyword">if</span> (logRecord != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="comment">// 有request就可以拿到 很多参数，这里方便写就用Map做参数容器</span></span><br><span class="line">		Map&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; properties = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt;();</span><br><span class="line">		    <span class="keyword">for</span> (<span class="keyword">Object</span> param : request.getParameterMap().keySet()) &#123;</span><br><span class="line">				properties.put(param.toString(), request.getParameter(param.toString()));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//其它的业务 逻辑</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-postHandle-请求时拦截"><a href="#3-2-postHandle-请求时拦截" class="headerlink" title="3.2 postHandle 请求时拦截"></a>3.2 postHandle 请求时拦截</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    /** </span><br><span class="line">      * 这个方法只会在当前这个Interceptor的preHandle方法返回值为<span class="keyword">true</span>的时候才会执行。postHandle是进行处理器拦截用的，它的执行时间是在处理器进行处理之 </span><br><span class="line">      * 后，也就是在Controller的方法调用之后执行，但是它会在DispatcherServlet进行视图的渲染之前执行，也就是说在这个方法中你可以对ModelAndView进行操 </span><br><span class="line">      * 作。这个方法的链式结构跟正常访问的方向是相反的，也就是说先声明的Interceptor拦截器该方法反而会后调用，这跟Struts<span class="number">2</span>里面的拦截器的执行过程有点像， </span><br><span class="line">      * 只是Struts<span class="number">2</span>里面的intercept方法中要手动的调用ActionInvocation的<span class="keyword">invoke</span>方法，Struts<span class="number">2</span>中调用ActionInvocation的<span class="keyword">invoke</span>方法就是调用下一个Interceptor </span><br><span class="line">      * 或者是调用action，然后要在Interceptor之前调用的内容都写在调用<span class="keyword">invoke</span>之前，要在Interceptor之后调用的内容都写在调用<span class="keyword">invoke</span>方法之后。 </span><br><span class="line">     */  </span><br><span class="line"><span class="title">@Override</span></span><br><span class="line">public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object</span><br><span class="line">        o, ModelAndView modelAndView) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-3-afterCompletion-返回拦截"><a href="#3-3-afterCompletion-返回拦截" class="headerlink" title="3.3 afterCompletion 返回拦截"></a>3.3 afterCompletion 返回拦截</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 该方法也是需要当前对应的Interceptor的preHandle方法的返回值为true时才会执行。该方法将在整个请求完成之后，也就是DispatcherServlet渲染了视图执行， </span></span><br><span class="line"><span class="comment">   * 这个方法的主要作用是用于清理资源的，当然这个方法也只能在当前这个Interceptor的preHandle方法的返回值为true时才会执行。 </span></span><br><span class="line"><span class="comment">   * url记录高于注解记录问题</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) <span class="keyword">throws</span></span><br><span class="line">          Exception &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="4-1-触发实现"><a href="#4-1-触发实现" class="headerlink" title="4.1 触发实现"></a>4.1 触发实现</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span>&#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="meta">@LogRecordAno</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> (String userid)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="二、使用aop和注解"><a href="#二、使用aop和注解" class="headerlink" title="二、使用aop和注解"></a>二、使用aop和注解</h1><h2 id="1-添加注解（参考上面）"><a href="#1-添加注解（参考上面）" class="headerlink" title="1.添加注解（参考上面）"></a>1.添加注解（参考上面）</h2><h2 id="2-添加切面"><a href="#2-添加切面" class="headerlink" title="2.添加切面"></a>2.添加切面</h2><blockquote>
-<h3 id="2-1添加jar"><a href="#2-1添加jar" class="headerlink" title="2.1添加jar"></a>2.1添加jar</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<hr>
-<h3 id="2-2采用切面来做aop处理"><a href="#2-2采用切面来做aop处理" class="headerlink" title="2.2采用切面来做aop处理"></a>2.2采用切面来做aop处理</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogAopAction</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(LogAopAction.class);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//切入点设置到自定义的log注解上---也可以切路径、通配符等</span></span><br><span class="line">    <span class="meta">@Pointcut</span>(<span class="string">"@annotation(com.rogchen.annotation.LogRecordAno)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pointCutMethod</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 记录操作日志</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@After</span>(<span class="string">"pointCutMethod()"</span>)  <span class="comment">// 使用上面定义的切入点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recordLog</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        Long newtime = System.currentTimeMillis();</span><br><span class="line">		<span class="comment">//业务逻辑代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="3-最终实现"><a href="#3-最终实现" class="headerlink" title="3.最终实现"></a>3.最终实现</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span>&#123;</span></span><br><span class="line">	<span class="meta">@LogRecordAno</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> (String userid)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/09/02/logger-Info/#more">more >></a>
+        
       
 
       
@@ -310,59 +543,9 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </blockquote>
-<h3 id="5、引用图片"><a href="#5、引用图片" class="headerlink" title="5、引用图片"></a>5、引用图片</h3><p><img src="G:CHK/Desktop/ip.pn" alt="rogchen"></p>
-<blockquote>
-<p>也是支持参数式 <a href=""></a></p>
-<blockquote>
-<p>图片的参数式<img src="(http://baidu.com)" alt="rogchen"></p>
-</blockquote>
-</blockquote>
-<h3 id="6、无序列表使用-、-或"><a href="#6、无序列表使用-、-或" class="headerlink" title="6、无序列表使用-、+或*"></a>6、无序列表使用-、+或*</h3><ul>
-<li>列表一</li>
-</ul>
-<ul>
-<li>列表二</li>
-</ul>
-<ul>
-<li>列表三</li>
-</ul>
-<h3 id="7、有序列表：有序列表的序号是根据第一行列表的数字顺序来的"><a href="#7、有序列表：有序列表的序号是根据第一行列表的数字顺序来的" class="headerlink" title="7、有序列表：有序列表的序号是根据第一行列表的数字顺序来的"></a>7、有序列表：有序列表的序号是根据第一行列表的数字顺序来的</h3><ol start="3">
-<li>列表三</li>
-<li>列表四</li>
-<li>列表五</li>
-</ol>
-<h3 id="8、强调：粗体和斜体-gt-一个星号或者是一个下划线包起来，会转换为倾斜，如果是2个，会转换为加粗"><a href="#8、强调：粗体和斜体-gt-一个星号或者是一个下划线包起来，会转换为倾斜，如果是2个，会转换为加粗" class="headerlink" title="8、强调：粗体和斜体-&gt;一个星号或者是一个下划线包起来，会转换为倾斜，如果是2个，会转换为加粗"></a>8、强调：粗体和斜体-&gt;一个星号或者是一个下划线包起来，会转换为<em>倾斜，如果是2个，会转换为<strong>加粗</strong></em></h3><p><em>两个星号(\</em>)包含一段文本就是粗体的语法*</p>
-<p><em>用一个下划线(\</em>)包含一段文本就是斜体的语法_</p>
-<p><strong>加粗<strong></strong></strong></p>
-<h3 id="9、表格"><a href="#9、表格" class="headerlink" title="9、表格"></a>9、表格</h3><table>
-<thead>
-<tr>
-<th>table</th>
-<th style="text-align:center">table1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>123</td>
-<td style="text-align:center">fwer</td>
-</tr>
-</tbody>
-</table>
-<h3 id="10、行内式：直接嵌套-gt-使用链接"><a href="#10、行内式：直接嵌套-gt-使用链接" class="headerlink" title="10、行内式：直接嵌套-&gt;使用链接"></a>10、行内式：直接嵌套-&gt;使用链接</h3><p><a href="www.baidu.com">rogchen</a></p>
-<h3 id="11、参数式-占位符-gt-支持title"><a href="#11、参数式-占位符-gt-支持title" class="headerlink" title="11、参数式: 占位符-&gt;支持title"></a>11、参数式: 占位符-&gt;支持title</h3><p>这里是<a href="http://www.baidu.com" title="百度" target="_blank" rel="noopener">name</a>，这里是<a href="http://google.com" title="谷歌" target="_blank" rel="noopener">home</a>，这也是<a href="/name/home" title="瞎写的">支持的哦</a></p>
-<blockquote>
-<p>这里也是可<a href="http://example.com/" title="Optional Title Here" target="_blank" rel="noopener">foo1</a>，使用<a href="http://example.com/" title="Optional Title Here" target="_blank" rel="noopener">foo2</a>，使用<a href="http://example.com/" title="Optional Title Here" target="_blank" rel="noopener">foo3</a>，使用<a href="http://example.com/" title="推荐使用这种" target="_blank" rel="noopener">foo4</a></p>
-</blockquote>
-<h3 id="11、转义"><a href="#11、转义" class="headerlink" title="11、转义"></a>11、转义</h3><blockquote>
-<ul>
-<li>\</li>
-<li>`</li>
-<li>*</li>
-<li>\/</li>
-</ul>
-</blockquote>
-<h3 id="12、删除线使用双"><a href="#12、删除线使用双" class="headerlink" title="12、删除线使用双~~"></a>12、删除线使用双~~</h3><p><del>删除线</del></p>
-
+        
+          <a class="article-more-a" href="/2018/08/29/rogchen-md/#more">more >></a>
+        
       
 
       
@@ -604,6 +787,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">md</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ll</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>

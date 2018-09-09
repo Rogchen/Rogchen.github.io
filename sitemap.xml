@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rogchen.github.com/2018/09/09/hexo-more/</loc>
+    
+    <lastmod>2018-09-09T08:34:59.262Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rogchen.github.com/2018/09/09/hexo-more/</loc>
+    
+    <lastmod>2018-09-09T08:34:54.591Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rogchen.github.com/2018/09/08/linux-ll/</loc>
+    
+    <lastmod>2018-09-09T08:07:17.135Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rogchen.github.com/2018/09/02/logger-Info/</loc>
     
-    <lastmod>2018-09-04T13:02:38.720Z</lastmod>
+    <lastmod>2018-09-09T08:03:48.260Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rogchen.github.com/2018/08/29/rogchen-md/</loc>
+    
+    <lastmod>2018-09-09T08:03:33.182Z</lastmod>
     
   </url>
   
@@ -12,13 +40,6 @@
     <loc>https://rogchen.github.com/2018/06/15/hello-world/</loc>
     
     <lastmod>2018-08-31T03:19:35.416Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rogchen.github.com/2018/08/29/rogchen-md/</loc>
-    
-    <lastmod>2018-08-31T03:18:10.000Z</lastmod>
     
   </url>
   

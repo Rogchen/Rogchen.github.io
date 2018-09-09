@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>Rogchen的博客</title>
+  <title>在linux上安装使用ll命令 | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="*{ 		margin:0; 		padding:0; 	} 	#textBox{ 		position: absolute; 		left: 0; 		top: 0; 		z-index: -999; 	} 	#bg{ 		background: url(sgws.jpg) -50px;  		width:500px; 		height: 314px; 		text-align:">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rogchen的博客">
-<meta property="og:url" content="https://rogchen.github.com/assets/demo/mediator/demo.html">
+  <meta name="description" content="ll并不是linux下一个基本的命令，它实际上是ls -l的一个别名。Ubuntu默认不支持命令ll，必须用 ls -l，这样使用起来不是很方便。如果要使用此命令，可以作如下修改：  打开 ~/.bashrc找到 #alias ll=’ls -l’，去掉前面的#就可以了。（关闭原来的终端才能使命令生效）这样个人用户可以使用ll命令，当切换成超级用户后，使用ll命令时提示找不到命令，那是因为你只是修">
+<meta name="keywords" content="linux,ls -l,ll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在linux上安装使用ll命令">
+<meta property="og:url" content="https://rogchen.github.com/2018/09/08/linux-ll/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="*{ 		margin:0; 		padding:0; 	} 	#textBox{ 		position: absolute; 		left: 0; 		top: 0; 		z-index: -999; 	} 	#bg{ 		background: url(sgws.jpg) -50px;  		width:500px; 		height: 314px; 		text-align:">
+<meta property="og:description" content="ll并不是linux下一个基本的命令，它实际上是ls -l的一个别名。Ubuntu默认不支持命令ll，必须用 ls -l，这样使用起来不是很方便。如果要使用此命令，可以作如下修改：  打开 ~/.bashrc找到 #alias ll=’ls -l’，去掉前面的#就可以了。（关闭原来的终端才能使命令生效）这样个人用户可以使用ll命令，当切换成超级用户后，使用ll命令时提示找不到命令，那是因为你只是修">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-14T07:00:10.957Z">
+<meta property="og:updated_time" content="2018-09-09T08:07:17.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rogchen的博客">
-<meta name="twitter:description" content="*{ 		margin:0; 		padding:0; 	} 	#textBox{ 		position: absolute; 		left: 0; 		top: 0; 		z-index: -999; 	} 	#bg{ 		background: url(sgws.jpg) -50px;  		width:500px; 		height: 314px; 		text-align:">
+<meta name="twitter:title" content="在linux上安装使用ll命令">
+<meta name="twitter:description" content="ll并不是linux下一个基本的命令，它实际上是ls -l的一个别名。Ubuntu默认不支持命令ll，必须用 ls -l，这样使用起来不是很方便。如果要使用此命令，可以作如下修改：  打开 ~/.bashrc找到 #alias ll=’ls -l’，去掉前面的#就可以了。（关闭原来的终端才能使命令生效）这样个人用户可以使用ll命令，当切换成超级用户后，使用ll命令时提示找不到命令，那是因为你只是修">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -157,85 +157,38 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-linux-ll" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在linux上安装使用ll命令
+    </h1>
+  
+
+        
+        <a href="/2018/09/08/linux-ll/" class="archive-article-date">
+  	<time datetime="2018-09-08T02:30:19.953Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="jquery.js"></script>
-<style type="text/css">
-	*{
-		margin:0;
-		padding:0;
-	}
-	#textBox{
-		position: absolute;
-		left: 0;
-		top: 0;
-		z-index: -999;
-	}
-	#bg{
-		background: url(sgws.jpg) -50px;
+        <p>ll并不是linux下一个基本的命令，它实际上是ls -l的一个别名。<br>Ubuntu默认不支持命令ll，必须用 ls -l，这样使用起来不是很方便。<br>如果要使用此命令，可以作如下修改：</p>
+<ul>
+<li>打开 ~/.bashrc<br>找到 #alias ll=’ls -l’，去掉前面的#就可以了。（关闭原来的终端才能使命令生效）<br>这样个人用户可以使用ll命令，当切换成超级用户后，使用ll命令时提示找不到命令，那是因为你只是修改了个人用户的配置，所以，切换成root后做相同的操作即可解决问题。<br>启示：我们可以通过修改~/.bashrc添加任何其他的命令别名。</li>
+</ul>
+<h2 id="还有另外一种实现方法："><a href="#还有另外一种实现方法：" class="headerlink" title="还有另外一种实现方法："></a>还有另外一种实现方法：</h2><a id="more"></a>
+<ul>
+<li>首先直接用vi创建文件“ll”。<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> <span class="keyword">ll</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在里面写上<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ls -l</span></span><br></pre></td></tr></table></figure></p>
+<p>保存。然后将这个新的“ll”文件copy到usr/bin下，就可以直接使用了。</p>
 
-		width:500px;
-		height: 314px;
-		text-align: center;
-		position: relative;
-		-webkit-animation:roll 3s infinite ease ;
-		   -moz-animation:roll 3s infinite ease ;
-		    -ms-animation:roll 3s infinite ease ;
-		     -o-animation:roll 3s infinite ease ;
-				animation:roll 3s infinite ease ;
-	}
-	#barHome{
-		width: 300px;
-		height: 10px;
-		background: #f00;
-		overflow: hidden;
-		position: absolute;
-		bottom: 45px;
-		left: 50%;
-		margin-left: -150px;
-	}
-	#barGuest{
-		width: 150px;
-		height: 10px;
-		background: #00f;
-	}
-	#results{
-		width: 300px;
-		position: absolute;
-		bottom: 65px;
-		left: 50%;
-		margin-left: -150px;
-		color: #fff;
-	}
-	#results span{
-		margin: 50px;
-	}
-	@-webkit-keyframes roll {0%{background-position: -90px;}50%{background-position: -10px;}100%{background-position: -90px;}}
-	@-moz-keyframes roll {0%{background-position: -90px;}50%{background-position: -10px;}100%{background-position: -90px;}}
-	@-ms-keyframes roll {0%{background-position: -90px;}50%{background-position: -10px;}100%{background-position: -90px;}}
-	@-o-keyframes roll {0%{background-position: -90px;}50%{background-position: -10px;}100%{background-position: -90px;}}
-	@keyframes roll {0%{background-position: -90px;}50%{background-position: -10px;}100%{background-position: -90px;}}
-</style>
-<title>mediator</title>
-</head>
-<body>
-	<div id="bg">
-		<input id="textBox" type="text">
-		<div id="results">请按F键与J键</div>
-		<div id="barHome">
-			<div id="barGuest"></div>
-		</div>
-	</div>
-<script type="text/javascript" src="mediator.js"></script>
-</body>
-</html>
       
 
       
@@ -274,6 +227,25 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ls -l</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ll</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -324,7 +296,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aQY7DQAgF0dz/0pltFuNOffCMZCivoiR29/MC0cDrha/3x/X5DfmVPPnqOTdfMmTIeCzjfbzIf67uOr+IM4bvTYYMGXsYtUeT0HkOxCSUn/cmQ4YMGSTVI5smQZOnmDJkyJCRMtIl+4dhGTJk7GSQQ2yt6sWp6eFZhgwZexi18v3/fP6T/oYMGTIexeiU+3mZLE0r413JkCFjNCNd5py6kRQwDeJ8+EOGDBmzGWkY5WMZ6Vb4S/nyfBkyZAxi8JJ9EOzCtC8d4Pjl/zJkyFjDIIdVPuaVhtS0LfriS8qQIWMEIxhoaGwuHaoImp0yZMgYzSDpIB9dTYtopNkQFONkyJAxlMEHSfsJHC/k8ULb5SFWhgwZ4xjk4Fqj8hSwlZ7KkCFjNOPegn6aJqYAcpcMGTJmM9Lb0mIcf1nF9oAMGTJGM9L2JA+s56B8Dtb8RcuQIWM2gwS4dLFOeyAN0zJkyNjD4ButjZHxsMtTz8vGgAwZMsYxeHjlQ1r9426ttSlDhow9jE4hLF2etw0QRoYMGQsYtQGL2jGYh+ygACdDhow1DF6Ur3USa8U1NGwhQ4aMoYxaczE91nbAiCpDhozRDH7Vmpe1bdXanzJkyJjN4EGWwNJjaj9ky5AhYw+jVvQnRbRO2a44bCFDhgwZ4ehYbVs8GZUhQ4aMNFzeG6aDxFSGDBkLGJ1mANkEbyek7QcZMmRsYPTzLj5aUSul3dbUlCFDxvMYP86H5PP+54voAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3awXLDIAxFUf//T7vbdjqQ+xDu1OKyyqQk1slClQTXhdf9a43+SvaTT11PLBkyZLyWcU8X2UM+9f2dUQyj1/OnyJAh4xxG+tXz/fMgSNpNnyVDhgwZafKtl4wyZMiQsSvh8kfOE26llJQhQ8Y5DJI652GhVhMXkQ/24jJkyHghg0/d//71I+cbMmTIeBWjMu6vj+cqkfyISoYMGa0ZlcfwRpQkcfL+/DhBhgwZXRm7rlaQg8nKtbAPMBkyZLRmrCXEtdS5xiYjPxkyZPRmVIb7a9cpSEvMjxZkyJBxDoMkuLWSjiTTtBwcTg1lyJBxJCMdfpEfgjfAwT8AGTJktGbUm9X0gDM95iSFqQwZMs5hpPM5vme+k5SV6IkyZMhoyqg3lunVCl7qBbHJkCGjNYNfrUiLvHi4XygQZciQcQ5jrXVMB3b8Ihq/uiFDhozeDJ400yIvDZEP4OJzCRkyZDRi8JWO1fi4bbFMlCFDRmsGD3otxAopPYSQIUNGb0Z6AWJXO8qHdChCGTJkHMDgyS6dyXNSeqiJflcZMmS0Y6QTrbQQrA/XhjtlyJDRlHGHKy0K9xaXQVEoQ4aMRoz60O2Jb+Dt67bZoQwZMv49I708UYGRpLw2sJMhQ8YJDJ74eP9Yb5KDlluGDBkyHhjGpcXfh3hkyJAhAwRUb2JJsbi5NJQhQ8arGLsOA9LCMb20IUOGjDMZpZsaIFGmB5wpRoYMGa0ZXwHKk2HRTIjfAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -336,6 +308,25 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2018/09/09/hexo-more/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          让hexo的首页只显示文章的部分内容而不是全部
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/02/logger-Info/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">通过注解和拦截器或aop实现日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -361,7 +352,7 @@ var _hmt = _hmt || [];
 
   
   <div id="SOHUCS"></div> 
-<!--<div id="SOHUCS" sid="undefined"></div>  -->
+<!--<div id="SOHUCS" sid="linux-ll"></div>  -->
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytFnM0Gz"; 
@@ -395,7 +386,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
