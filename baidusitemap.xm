@@ -5,22 +5,7 @@
     
   <url>
     <loc>https://rogchen.github.com/2018/09/09/hexo-more/</loc>
-    <lastmod>2018-09-09T08:34:59.262Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2018-09-09T08:34:59.246Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://rogchen.github.com/2018/09/09/hexo-more/</loc>
-    <lastmod>2018-09-09T08:34:54.591Z</lastmod>
+    <lastmod>2018-09-10T08:11:30.291Z</lastmod>
     <data>
         <display>
         <title>让hexo的首页只显示文章的部分内容而不是全部</title>

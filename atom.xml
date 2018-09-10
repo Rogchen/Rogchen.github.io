@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rogchen.github.com/"/>
-  <updated>2018-09-09T08:34:59.262Z</updated>
+  <updated>2018-09-10T08:11:30.291Z</updated>
   <id>https://rogchen.github.com/</id>
   
   <author>
@@ -17,65 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://rogchen.github.com/2018/09/09/hexo-more/"/>
-    <id>https://rogchen.github.com/2018/09/09/hexo-more/</id>
-    <published>2018-09-09T08:34:59.246Z</published>
-    <updated>2018-09-09T08:34:59.262Z</updated>
-    
-    <content type="html"><![CDATA[<!DOCTYPE html []><html>  <head>    <meta charset="UTF-8">    <meta name="author" content="MarkdownViewer++">    <title>hexo-more.md</title>    <style type="text/css">            /* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */td, h1, h2, h3, h4, h5, p, ul, ol, li {    page-break-inside: avoid; }        </style>  </head>  <body>    <hr>    <p>title: 让hexo的首页只显示文章的部分内容而不是全部</p>    <h2 id="tags-hexo">tags:[hexo]</h2>    <pre>      <code>Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？</code>    </pre>    <p>我们通过下面的三种方式实现:</p>    <h2 id="section">第一种方法</h2>    <hr>    <p>用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：</p>    <pre>      <code>1 # Automatically Excerpt. Not recommend.2 # Please use &lt;!-- more --&gt; in the post to control excerpt accurately.3 auto_excerpt:4   enable: false5   length: 150</code>    </pre>    <p>把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。</p>    <a id="more"></a>    <p>修改后重启 hexo 就ok了。</p>    <ul>      <li>效果：修改 _config.yml 文件的效果是会格式化你文章的样式，直接把文字挤在一起显示，最后会有 …。</li>    </ul>    <h2 id="section-1">第二种方法</h2>    <hr>    <p>在你写 md 文章的时候，可以在内容中加上 &lt;!--more--&gt;，这样首页和列表页展示的文章内容就是 <!--more--> 之前的文字，而之后的就不会显示了。上面两种方式展示出来的效果是不一样的。</p>    <ul>      <li>效果：加上 &lt;!--more--&gt;展示出来的就是你原本文章的样式，最后不会有…。</li>    </ul>    <h2 id="section-2">第三种方法</h2>    <hr>    <p>在文章的 front-matter 中添加 description，并提供文章摘录</p>    <pre>      <code>1 title: 让hexo的首页只显示文章的部分内容而不是全部2 id: set-hexo-show-more-button-on-index3 date: 2017-09-30 11:01:404 tags:5    - blog6    - hexo</code>    </pre>    <p>但是使用这种方式生成的描述信息在文章的详情页是不再显示的。</p>    <h2 id="section-3">总结</h2>    <hr>    <p>各种方式展示的效果各有好处，第二种方法保留了样式而且可以自行选择显示哪些内容来预览，推荐使用此方法，第一种方法显示的每篇文章的预览都是一样的高度，第三种则需要在文章的[front-matter]{https://hexo.io/docs/front-matter.html}里面添加。</p>    <p>参考链接：</p>    <ul>      <li>        <a href="http://www.5isjyx.com/coding/201704/nextreadthefulltext.html" target="_blank" rel="noopener">http://www.5isjyx.com/coding/201704/nextreadthefulltext.html</a>      </li>      <li>        <a href="http://theme-next.iissnan.com/faqs.html" target="_blank" rel="noopener">http://theme-next.iissnan.com/faqs.html</a>      </li>    </ul>  </body></html>]]></content>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html []&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta name=&quot;author&quot; content=&quot;MarkdownViewer++&quot;&gt;
-    &lt;title&gt;hexo-more.md&lt;/title&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-            
-/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
-td, h1, h2, h3, h4, h5, p, ul, ol, li {
-    page-break-inside: avoid; 
-}
-
-        &lt;/style&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;hr&gt;
-    &lt;p&gt;title: 让hexo的首页只显示文章的部分内容而不是全部&lt;/p&gt;
-    &lt;h2 id=&quot;tags-hexo&quot;&gt;tags:
-[hexo]&lt;/h2&gt;
-    &lt;pre&gt;
-      &lt;code&gt;Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？
-&lt;/code&gt;
-    &lt;/pre&gt;
-    &lt;p&gt;我们通过下面的三种方式实现:&lt;/p&gt;
-    &lt;h2 id=&quot;section&quot;&gt;第一种方法&lt;/h2&gt;
-    &lt;hr&gt;
-    &lt;p&gt;用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：&lt;/p&gt;
-    &lt;pre&gt;
-      &lt;code&gt;1 # Automatically Excerpt. Not recommend.
-2 # Please use &amp;lt;!-- more --&amp;gt; in the post to control excerpt accurately.
-3 auto_excerpt:
-4   enable: false
-5   length: 150
-&lt;/code&gt;
-    &lt;/pre&gt;
-    &lt;p&gt;把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>让hexo的首页只显示文章的部分内容而不是全部</title>
     <link href="https://rogchen.github.com/2018/09/09/hexo-more/"/>
     <id>https://rogchen.github.com/2018/09/09/hexo-more/</id>
     <published>2018-09-09T08:14:55.205Z</published>
-    <updated>2018-09-09T08:34:54.591Z</updated>
+    <updated>2018-09-10T08:11:30.291Z</updated>
     
     <content type="html"><![CDATA[<pre><code>Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？</code></pre><p>我们通过下面的三种方式实现:</p><h2 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h2><hr><p>用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：</p><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">1 </span># Automatically Excerpt. <span class="keyword">Not</span> recommend.</span><br><span class="line"><span class="symbol">2 </span># Please use &lt;!-- more --&gt; in the post <span class="keyword">to</span> control excerpt accurately.</span><br><span class="line"><span class="symbol">3 </span>auto_excerpt:</span><br><span class="line"><span class="symbol">4 </span>  enable: false</span><br><span class="line"><span class="symbol">5 </span>  length: <span class="number">150</span></span><br></pre></td></tr></table></figure><p>把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。<br><a id="more"></a><br>修改后重启 hexo 就ok了。</p><ul><li>效果：修改 _config.yml 文件的效果是会格式化你文章的样式，直接把文字挤在一起显示，最后会有 …。</li></ul><h2 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h2><hr><p>  在你写 md 文章的时候，可以在内容中加上 &lt;!–more–>，这样首页和列表页展示的文章内容就是 <!--more--> 之前的文字，而之后的就不会显示了。<br>  上面两种方式展示出来的效果是不一样的。</p><ul><li>效果：加上 &lt;!–more–>展示出来的就是你原本文章的样式，最后不会有…。</li></ul><h2 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h2><hr><p>在文章的 front-matter 中添加 description，并提供文章摘录<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">1 </span>title: 让hexo的首页只显示文章的部分内容而不是全部</span><br><span class="line"><span class="symbol">2 </span>id: set-hexo-show-more-button-<span class="keyword">on</span>-index</span><br><span class="line"><span class="symbol">3 </span>date: <span class="number">2017</span>-<span class="number">09</span>-<span class="number">30</span> <span class="number">11</span>:<span class="number">01</span>:<span class="number">40</span></span><br><span class="line"><span class="symbol">4 </span>tags:</span><br><span class="line"><span class="symbol">5 </span>   - blog</span><br><span class="line"><span class="symbol">6 </span>   - hexo</span><br></pre></td></tr></table></figure></p><p>但是使用这种方式生成的描述信息在文章的详情页是不再显示的。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr><p>各种方式展示的效果各有好处，第二种方法保留了样式而且可以自行选择显示哪些内容来预览，推荐使用此方法，第一种方法显示的每篇文章的预览都是一样的高度，第三种则需要在文章的[front-matter]{<a href="https://hexo.io/docs/front-matter.html}里面添加。" target="_blank" rel="noopener">https://hexo.io/docs/front-matter.html}里面添加。</a></p><p>参考链接：</p><ul><li><a href="http://www.5isjyx.com/coding/201704/nextreadthefulltext.html" target="_blank" rel="noopener">http://www.5isjyx.com/coding/201704/nextreadthefulltext.html</a></li><li><a href="http://theme-next.iissnan.com/faqs.html" target="_blank" rel="noopener">http://theme-next.iissnan.com/faqs.html</a></li></ul>]]></content>
     
