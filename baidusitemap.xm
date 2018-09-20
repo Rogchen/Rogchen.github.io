@@ -5,10 +5,10 @@
     
   <url>
     <loc>https://rogchen.github.com/2018/09/20/javamail/</loc>
-    <lastmod>2018-09-20T08:29:25.543Z</lastmod>
+    <lastmod>2018-09-20T08:29:55.602Z</lastmod>
     <data>
         <display>
-        <title>springboot使用mail发送群发邮件一</title>
+        <title>springboot使用mail群发邮件一</title>
         <pubTime>2018-09-20T08:17:04.029Z</pubTime>
         
         <tag>springboot</tag>
