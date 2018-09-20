@@ -4,16 +4,16 @@
 
     
   <url>
-    <loc>https://rogchen.github.com/2018/09/14/draft/</loc>
-    <lastmod>2018-09-14T03:13:46.335Z</lastmod>
+    <loc>https://rogchen.github.com/2018/09/20/javamail/</loc>
+    <lastmod>2018-09-20T08:29:25.543Z</lastmod>
     <data>
         <display>
-        <title>hexo私密功能</title>
-        <pubTime>2018-09-14T03:01:50.295Z</pubTime>
+        <title>springboot使用mail发送群发邮件一</title>
+        <pubTime>2018-09-20T08:17:04.029Z</pubTime>
         
-        <tag>draft</tag>
+        <tag>springboot</tag>
          
-        <tag>hexo</tag>
+        <tag>mail</tag>
          
          
            
@@ -24,13 +24,32 @@
     
   <url>
     <loc>https://rogchen.github.com/2018/08/29/rogchen-md/</loc>
-    <lastmod>2018-09-14T02:57:14.198Z</lastmod>
+    <lastmod>2018-09-20T08:07:43.395Z</lastmod>
     <data>
         <display>
         <title>Rogchen-md学习</title>
         <pubTime>2018-08-29T13:15:06.442Z</pubTime>
         
         <tag>md</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://rogchen.github.com/2018/09/14/draft/</loc>
+    <lastmod>2018-09-14T03:13:46.335Z</lastmod>
+    <data>
+        <display>
+        <title>hexo私密功能</title>
+        <pubTime>2018-09-14T03:01:50.295Z</pubTime>
+        
+        <tag>draft</tag>
+         
+        <tag>hexo</tag>
          
          
            

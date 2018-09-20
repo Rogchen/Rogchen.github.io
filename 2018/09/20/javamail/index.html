@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>Rogchen的博客</title>
+  <title>springboot使用mail发送群发邮件一 | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="h3,h4{ 			text-align: center; 		} 		#main{ 			width: 350px; 			height: 100px; 			border: 1px solid #000; 			margin: 0 auto; 		} 		#main .box{ 			width: 100px; 			height: 100px; 			margin-le">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rogchen的博客">
-<meta property="og:url" content="https://rogchen.github.com/assets/demo/hack_demo.html">
+  <meta name="description" content="原由  之前因为业务需要需要搭建一个邮件发送，网上一查一堆，也没什么毛病，这里主要是做个笔记。还有就是为了只会搭建个邮箱群发平台，但是查了一堆资料都是使用个账号，但是目前一些免费的账号都是有发送次数限制的。那是否是不是有多个账号进行群发呢？答案显然是有的。 javamail介绍　　JavaMail API 按照功能可以划分为如下三大类：   创建和解析邮件的API    发送邮件的API    接">
+<meta name="keywords" content="springboot,mail">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot使用mail发送群发邮件一">
+<meta property="og:url" content="https://rogchen.github.com/2018/09/20/javamail/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="h3,h4{ 			text-align: center; 		} 		#main{ 			width: 350px; 			height: 100px; 			border: 1px solid #000; 			margin: 0 auto; 		} 		#main .box{ 			width: 100px; 			height: 100px; 			margin-le">
+<meta property="og:description" content="原由  之前因为业务需要需要搭建一个邮件发送，网上一查一堆，也没什么毛病，这里主要是做个笔记。还有就是为了只会搭建个邮箱群发平台，但是查了一堆资料都是使用个账号，但是目前一些免费的账号都是有发送次数限制的。那是否是不是有多个账号进行群发呢？答案显然是有的。 javamail介绍　　JavaMail API 按照功能可以划分为如下三大类：   创建和解析邮件的API    发送邮件的API    接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-14T07:00:10.943Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/javamail/javamail-api.png">
+<meta property="og:updated_time" content="2018-09-20T08:29:25.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rogchen的博客">
-<meta name="twitter:description" content="h3,h4{ 			text-align: center; 		} 		#main{ 			width: 350px; 			height: 100px; 			border: 1px solid #000; 			margin: 0 auto; 		} 		#main .box{ 			width: 100px; 			height: 100px; 			margin-le">
+<meta name="twitter:title" content="springboot使用mail发送群发邮件一">
+<meta name="twitter:description" content="原由  之前因为业务需要需要搭建一个邮件发送，网上一查一堆，也没什么毛病，这里主要是做个笔记。还有就是为了只会搭建个邮箱群发平台，但是查了一堆资料都是使用个账号，但是目前一些免费的账号都是有发送次数限制的。那是否是不是有多个账号进行群发呢？答案显然是有的。 javamail介绍　　JavaMail API 按照功能可以划分为如下三大类：   创建和解析邮件的API    发送邮件的API    接">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/javamail/javamail-api.png">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -157,58 +159,71 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-javamail" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      springboot使用mail发送群发邮件一
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/javamail/" class="archive-article-date">
+  	<time datetime="2018-09-20T08:17:04.029Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title></title>
-	<style type="text/css">
-		h3,h4{
-			text-align: center;
-		}
-		#main{
-			width: 350px;
-			height: 100px;
-			border: 1px solid #000;
-			margin: 0 auto;
-		}
-		#main .box{
-			width: 100px;
-			height: 100px;
-			margin-left: 10px;
-			position: relative;
-			float: left;
-			background: #333;
-			color:#ddd;
-		}
-		#main .task1:hover{
-			z-index: 999;
-		}
-		#main .task2:hover{
-			z-index: 999;
-			background: #999;
-		}
-		#main .task3:hover{
-			z-index: 999;
-			background: #333;
-		}
-	</style>
-</head>
-<body>
-	<h3>三个background为#333的box</h3>
-	<h4>- 请在IE6，IE7中触发hover -</h4>
-	<div id="main">
-		<div class="box task1">box1 - 未设置backgorund</div>
-		<div class="box task2">box2 - background: #999</div>
-		<div class="box task3">box3 - background: #333</div>
-	</div>
-</body>
-</html>
+        <h3 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h3><p>  之前因为业务需要需要搭建一个邮件发送，网上一查一堆，也没什么毛病，这里主要是做个笔记。还有就是为了只会搭建个邮箱群发平台，但是查了一堆资料都是使用个账号，但是目前一些免费的账号都是有发送次数限制的。那是否是不是有多个账号进行群发呢？答案显然是有的。</p>
+<h3 id="javamail介绍"><a href="#javamail介绍" class="headerlink" title="javamail介绍"></a>javamail介绍</h3><p>　　JavaMail API 按照功能可以划分为如下三大类：</p>
+<ul>
+<li><ol>
+<li>创建和解析邮件的API</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>发送邮件的API</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>接收邮件的API</li>
+</ol>
+</li>
+</ul>
+<p>　　以上三种类型的API在JavaMail 中由多个类组成，但是主要有四个核心类，我们在编写程序时，记住这四个核心类，就很容易编写出Java邮件处理程序。</p>
+<a id="more"></a>
+<p><img src="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/javamail/javamail-api.png" alt="javamail-api">
+　　</p>
+<ul>
+<li><ol>
+<li>Message 类:javax.mail.Message 类是创建和解析邮件的核心 API，这是一个抽象类，通常使用它的子类javax.mail.internet.MimeMessage 类。它的实例对象表示一份电子邮件。客户端程序发送邮件时，首先使用创建邮件的 JavaMail API 创建出封装了邮件数据的 Message 对象，然后把这个对象传递给邮件发送API（Transport 类） 发送。客户端程序接收邮件时，邮件接收API把接收到的邮件数据封装在Message 类的实例中，客户端程序在使用邮件解析API从这个对象中解析收到的邮件数据。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Transport 类：javax.mail.Transport 类是发送邮件的核心API 类，它的实例对象代表实现了某个邮件发送协议的邮件发送对象，例如 SMTP 协议，客户端程序创建好 Message 对象后，只需要使用邮件发送API 得到 Transport 对象，然后把 Message 对象传递给 Transport 对象，并调用它的发送方法，就可以把邮件发送给指定的 SMTP 服务器。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><ol start="3">
+<li>Store 类：javax.mail.Store 类是接收邮件的核心 API 类，它的实例对象代表实现了某个邮件接收协议的邮件接收对象，例如 POP3 协议，客户端程序接收邮件时，只需要使用邮件接收 API 得到 Store 对象，然后调用 Store 对象的接收方法，就可以从指定的 POP3 服务器获得邮件数据，并把这些邮件数据封装到表示邮件的 Message 对象中。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>Session 类：javax.mail.Session 类用于定义整个应用程序所需的环境信息，以及收集客户端与邮件服务器建立网络连接的会话信息，例如邮件服务器的主机名、端口号、采用的邮件发送和接收协议等。Session 对象根据这些信息构建用于邮件收发的 Transport 和 Store 对象，以及为客户端创建 Message 对象时提供信息支持。</li>
+</ol>
+</li>
+</ul>
+<h3 id="java实现过程"><a href="#java实现过程" class="headerlink" title="java实现过程"></a>java实现过程</h3><p>在理解下面通过代码实现邮件的发送时，我们可以将邮件发送假想为火箭运载这卫星发送。其中Message 是卫星，Transport 是火箭，而卫星和火箭的构建都需要 Session 的帮助，这样的关系更加便于记忆。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//发件人地址</span><br><span class="line">public static String senderAddress = &quot;***@qq.com&quot;;</span><br><span class="line">//收件人地址</span><br><span class="line">public static String recipientAddress = &quot;***@qq.com&quot;;</span><br><span class="line">//发件人账户名</span><br><span class="line">public static String senderAccount = &quot;****@qq.com&quot;;</span><br><span class="line">//发件人账户密码</span><br><span class="line">public static String senderPassword = &quot;&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//1、连接邮件服务器的参数配置</span><br><span class="line">Properties props = new Properties();</span><br><span class="line">//设置用户的认证方式</span><br><span class="line">props.setProperty(&quot;mail.smtp.auth&quot;, &quot;true&quot;);</span><br><span class="line">//设置传输协议</span><br><span class="line">props.setProperty(&quot;mail.transport.protocol&quot;, &quot;smtp&quot;);</span><br><span class="line">//设置发件人的SMTP服务器地址</span><br><span class="line">props.setProperty(&quot;mail.smtp.host&quot;, &quot;smtp.qq.com&quot;);</span><br><span class="line">//2、创建定义整个应用程序所需的环境信息的 Session 对象</span><br><span class="line">Session session = Session.getInstance(props);</span><br><span class="line">//设置调试信息在控制台打印出来</span><br><span class="line">session.setDebug(true);</span><br><span class="line">//3、创建邮件的实例对象</span><br><span class="line">Message msg = getMimeMessage(session,senderAddress);</span><br><span class="line">//4、根据session对象获取邮件传输对象Transport</span><br><span class="line">Transport transport = session.getTransport();</span><br><span class="line">//设置发件人的账户名和密码</span><br><span class="line">transport.connect(senderAccount, senderPassword);</span><br><span class="line">//发送邮件，并发送到所有收件人地址，message.getAllRecipients() 获取到的是在创建邮件对象时添加的所有收件人, 抄送人, 密送人</span><br><span class="line">transport.sendMessage(msg, msg.getAllRecipients());</span><br><span class="line">//如果只想发送给指定的人，可以如下写法</span><br><span class="line">//transport.sendMessage(msg, new Address[]&#123;new InternetAddress(&quot;xxx@qq.com&quot;)&#125;);</span><br><span class="line">//5、关闭邮件连接</span><br><span class="line">transport.close();</span><br></pre></td></tr></table></figure>
+<p>这样就可以发送邮件了，是不是很简单。</p>
+
       
 
       
@@ -247,6 +262,21 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mail</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -297,7 +327,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS27DMAwFwNz/0um2QGPnkbQLWBqvisRWNF6w/Oj1iq/3r+v3J3/vOfr2fOWjX7n4wsDAeCzjfXod3ZNv4ujZ5BUke8PAwNiHkS9dDZ1JmD5nnP8WBgYGRhJYkzA9D74YGBgYVcZ50EzWz18QBgYGRl7EJqXpeUg931ay2gW1OAYGxgMZvfb9//x9y3wDAwPjUYx38Zq3zJI0sbwrDAyMpRnVpn+enFUHCb1nMTAwdmNUC9GkHO0lnUnp+6UWx8DA2IyRLNcL2ck6hSNoGBgYSzMmg8nqoa5JOH71HsDAwHg4oxf4ekVpflysPOzEwMBYmpED8tTtqjFAkiBmfTgMDIxnM3rHua46+DVvtH34v4GBgbElo1fK5iG4Nwo9zHAxMDCWY+RLJ8csktZbfmijvAcMDIxFGZPmfjXtq7ILzT4MDIwNGL1EbV4A9wL6h08wMDCWZuRt+moTP0dWMV9KawwMjA0YvRQwp04S0PI4EwMDYznGJFGrtuEmx8XyY2oYGBgrMeYHLHpDzXxsEGEwMDA2YMxbY9XhZeHgVzIRwMDA2IDRGyhOxpOFcjRZEwMDY1HGHS2zeRJZfa0YGBhrM/KrOra86hBYb3iAgYGxHqMaZHvhtQceFbEYGBjLMSaBbzKYzF/Bl51gYGBgxMG3moFWxxLRQhgYGBh5ulZMJfPX8eFODAyMDRhJEVvdxGRIcP4UBgbGbow78q552nfLUBMDA+N5jB+uVrwqq6hw0gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3azW6DQAxFYd7/pem2VQU51x4i4TmzqkgJfFlY/jsOfM5/5+pT8v/kruOJI0OGjNcyzttz/1r8rt9XCIa/mwwZMvZhXEWw+8eTKzz4kudeXpchQ4YMkN7xgFsjyZAhQ0YaBNNgel8A81RShgwZOzNI6OwUtGkS+WAtLkOGjBcyeNf9+38/Mt+QIUPGqxhneDqpZPozBW8lQ4aM0Yz0MbVCtBPEyfvIkCFjH0ZaOqaLYp21MJQsypAhYyhjVdXLk0XC5oXunwxXhgwZoxnpEHFtICaJ5odgLUOGjNEMXlimn5JH8sKY3yVDhox5jE5TrNY448E6WOCQIUPGaAaPxLV2P08Ka422y8GADBkyNmCsWlethVQeymXIkLEDI23Qk9SQr2uk3xkshMmQIWMcg5zOckYtWYyXLWTIkLEBo7NCkTbsOokmmsTKkCFjKIM393npG8xOSz9QcadMhgwZr2KsnQOS1JCXx52CWYYMGVMZpFjtNPc5iSeXMmTI2IeRtubTcpQ32tJU9cOUQ4YMGeMYtVQsbo2VxgOkAJYhQ8YODN7c77fwOs21ILeVIUPGCMYZnk56l4KDcYUMGTJGM2ozQRJAa9/AS1aULMqQIWMQg48e0/I1XdFojVFlyJCxAYMHvrXttk6RHI8wZciQIQPclY4ngyJWhgwZMsIUcO2oEjUBZciQsQGDFLGd8NoZMyxut8mQIeOFjM6mBnm5dMDJ1zJkyJCxAeMH90ZqmK2nKG4AAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,6 +339,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/14/draft/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo私密功能</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -334,7 +374,7 @@ var _hmt = _hmt || [];
 
   
   <div id="SOHUCS"></div> 
-<!--<div id="SOHUCS" sid="undefined"></div>  -->
+<!--<div id="SOHUCS" sid="javamail"></div>  -->
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytFnM0Gz"; 
@@ -368,7 +408,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
