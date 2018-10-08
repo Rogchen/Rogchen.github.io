@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://rogchen.github.com/2018/09/20/javamail/</loc>
+    <loc>https://rogchen.github.com/2018/10/08/linux-v2ray-client/</loc>
     
-    <lastmod>2018-09-25T02:07:03.160Z</lastmod>
+    <lastmod>2018-10-08T08:31:59.333Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://rogchen.github.com/2018/08/29/rogchen-md/</loc>
     
-    <lastmod>2018-09-20T08:07:43.395Z</lastmod>
+    <lastmod>2018-10-08T08:16:20.151Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rogchen.github.com/2018/09/29/cmd_wifi/</loc>
+    
+    <lastmod>2018-09-30T03:21:20.893Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rogchen.github.com/2018/09/20/javamail/</loc>
+    
+    <lastmod>2018-09-25T02:07:03.160Z</lastmod>
     
   </url>
   

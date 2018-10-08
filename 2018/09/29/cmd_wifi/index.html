@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>相册 | Rogchen的博客</title>
+  <title>windows通过命令获取连接过的所有wifi和密码 | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Ins 	   	图片来自instagram，正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="相册">
-<meta property="og:url" content="https://rogchen.github.com/photos/index.html">
+  <meta name="description" content="在windows 打开dos（win+r）输入下面命令就列出很多行 你以前连接过的wifi信息、加密方式、包括密码1for /f &quot;skip=9 tokens=1,2 delims=:&quot; %i in (&apos;netsh wlan show profiles&apos;) do  @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=cl">
+<meta name="keywords" content="wifi,cmd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows通过命令获取连接过的所有wifi和密码">
+<meta property="og:url" content="https://rogchen.github.com/2018/09/29/cmd_wifi/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="Ins 	   	图片来自instagram，正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild">
+<meta property="og:description" content="在windows 打开dos（win+r）输入下面命令就列出很多行 你以前连接过的wifi信息、加密方式、包括密码1for /f &quot;skip=9 tokens=1,2 delims=:&quot; %i in (&apos;netsh wlan show profiles&apos;) do  @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=cl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-15T07:34:20.922Z">
+<meta property="og:updated_time" content="2018-09-30T03:21:20.893Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
-<meta name="twitter:description" content="Ins 	   	图片来自instagram，正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild">
+<meta name="twitter:title" content="windows通过命令获取连接过的所有wifi和密码">
+<meta name="twitter:description" content="在windows 打开dos（win+r）输入下面命令就列出很多行 你以前连接过的wifi信息、加密方式、包括密码1for /f &quot;skip=9 tokens=1,2 delims=:&quot; %i in (&apos;netsh wlan show profiles&apos;) do  @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=cl">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -157,42 +157,29 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-photos" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-cmd_wifi" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      相册
+      windows通过命令获取连接过的所有wifi和密码
     </h1>
   
 
+        
+        <a href="/2018/09/29/cmd_wifi/" class="archive-article-date">
+  	<time datetime="2018-09-29T09:55:45.720Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-29</time>
+</a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <link rel="stylesheet" href="./ins.css">
-<div class="photos-btn-wrap">
-	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Ins</a>
-	<!--<a class="photos-btn" target="_blank" href="http://litten.me/gallery/">摄影</a>-->
-</div>
-<div class="instagram itemscope">
-	<a href="https://www.instagram.com/litten225/" target="_blank" class="open-ins">图片来自instagram，正在加载中…</a>
-</div>
-<script>
-  (function() {
-    var loadScript = function(path) {
-      var $script = document.createElement('script')
-      document.getElementsByTagName('body')[0].appendChild($script)
-      $script.setAttribute('src', path)
-    }
-    setTimeout(function() {
-      loadScript('./ins.js')
-    }, 0)
-  })()
-</script>
+        <ul>
+<li>在windows 打开dos（win+r）输入下面命令就列出很多行 你以前连接过的wifi信息、加密方式、包括密码<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /f <span class="string">"skip=9 tokens=1,2 delims=:"</span> %i <span class="keyword">in</span> (<span class="string">'netsh wlan show profiles'</span>) <span class="keyword">do</span>  @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=<span class="keyword">clear</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
 
@@ -232,6 +219,21 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wifi</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cmd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,7 +284,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aQY6DMAwFUO5/6c52pBnotx1SKr2sqgqSB4sv7OQ44vH6Nc7+ObsrmW3xwMXFHXNflyO/prdKeX5cXNyN3OsYOvud3PX3+jNuFIW4uLgP5uasPMhwcXG/nZuXNNX5cXFxn8OtBk1ewFTDcVmthouLO+DmTY37ft/S38XFxW1xX8XRC77ePP/chYuLu4WbB0ry2ZE/ZG9dXFzcPdx84WVNjdaXTOE0By4u7phbjaEJaBKFhV4OLi7uIm6+NVLdTO19+rwJSlxc3Ju5ec7ljY/q9YV1cXFxt3Dn+xR3bJGOih9cXNylbZHqZ0r1yMWCQx64uLhbuL0jmPkRjUnZs6BWw8XFXcpNoEnM9R6pHGS4uLg3cCfTXT/w2uOhuLi4O7nJZsYc1yt1TnMXFxd3C7caXr0lq8cv3hQ/uLi4H+JWt1rz2MpfQbPqwsXFbXEnG6u9xmivmYKLi7uTu/YER75Zkndrmg+Di4s75k4ORvTaKHnAHZPsxMXFHXPzoOltiOYJ+uZF4OLifiG31wQpV2y4uLgP484boNXaaxRkuLi4A2616ZkXS/OtF1xc3P3capTkh6uqdy3u7+Li4na4P5YaUsHXEjo9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aS5KDMAxFUfa/abKAFOQ+2aQK6TJKdSD4eKDWx8eBr/PruvqW3P/97NXvbL5kyJDxWsZ5e90viz91tWjy+f4tMmTImMMgoZBEPLJBJFjztcmQIUNGLSCupIwyZMiQsYuB0jVcAJPgK0OGDBkkdJL705BaK5JlyJAxjcG77v///Mh8Q4YMGa9i1ELnrpYZSRDRqmTIkNGakb6mVojyQUJtPTJkyJjD4API2mCSLIVsUyKTIUNGHwaH3aeGacLHN6sY1mXIkNGIwQ9PpAcsaoGYb5AMGTLmMHb9RO3+lV+TIUPGBAYvIGtp4kqw5v8AZMiQ0ZvxRCufh931RhsaDMiQIaMpg7fJ0mCdHsuI220yZMhox+BJWJogkuIzLWLRgTAZMmQ0ZawvvVZ23gffYJtkyJAxgLEeQHkhWtuyIDWUIUNGawYvLHmwTmen5L1HGvtlyJDRiJEOIHlATIeUcb4nQ4aM1gwezUhrLP12PbmUIUPGHEbamk/bbWkBnCadMmTImMOopYMcnCaUS+MBGTJktGasX7worb338ikZMmQ0ZZzhxWtGHqZrDTh0LEyGDBktGHubbnzkyVv/pFSWIUPGBEba5OLl6xNjBhkyZExmpIEvTenShh3ZiCDSy5AhYxiDjw1I6cuTvx/rkSFDhozwqGutiOXJ4obUUIYMGS9kkCKW/z14fYktQ4aMaYylkxogUNZGCzx9lCFDRmvGB/1s2xkA+sVGAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,6 +296,25 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2018/10/08/linux-v2ray-client/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          在linux使用v2ray进行翻墙
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/20/javamail/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">springboot使用mail群发邮件一</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -312,6 +333,24 @@ var _hmt = _hmt || [];
 </aside>
 
 
+
+  
+  
+  
+
+  
+  <div id="SOHUCS"></div> 
+<!--<div id="SOHUCS" sid="cmd_wifi"></div>  -->
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytFnM0Gz"; 
+var conf = "364b2ce85a0a34638cf8a1e4411a7d40"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -335,7 +374,7 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
