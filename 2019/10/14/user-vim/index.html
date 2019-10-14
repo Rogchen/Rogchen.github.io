@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>springboot的configuration跟auto-configuration的区别。 | Rogchen的博客</title>
+  <title>vim使用 | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="spring-boot提倡通过annotation来进行bean的配置，现在spring-boot里面常用的两种创建bean的方式有auto-configuration和configuration两种方式。 1、configuration配置的使用。在配置文件(添加@configuration的类)跟启动类在同个包路径下可用直接被扫描，因为springbootApplication注解自带Comp">
-<meta name="keywords" content="springboot,configuration、autoconfiguration">
+  <meta name="description" content="入门操作1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存操作提升2、 :set showmode+回车 即可显示提示。3、粘贴复制删除等操作123456789----命令模式：----yy	复制光标所在行2yy	复制光标所在行开始的2行p	粘贴dd	删除光标所在行（实际是剪切）3dd	删除光标所在行开始的3行（剪切）x	删除当前光标所在的字符X">
+<meta name="keywords" content="vim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springboot的configuration跟auto-configuration的区别。">
-<meta property="og:url" content="https://rogchen.github.com/2018/11/18/springboot-configuration/index.html">
+<meta property="og:title" content="vim使用">
+<meta property="og:url" content="https://rogchen.github.com/2019/10/14/user-vim/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="spring-boot提倡通过annotation来进行bean的配置，现在spring-boot里面常用的两种创建bean的方式有auto-configuration和configuration两种方式。 1、configuration配置的使用。在配置文件(添加@configuration的类)跟启动类在同个包路径下可用直接被扫描，因为springbootApplication注解自带Comp">
+<meta property="og:description" content="入门操作1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存操作提升2、 :set showmode+回车 即可显示提示。3、粘贴复制删除等操作123456789----命令模式：----yy	复制光标所在行2yy	复制光标所在行开始的2行p	粘贴dd	删除光标所在行（实际是剪切）3dd	删除光标所在行开始的3行（剪切）x	删除当前光标所在的字符X">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-18T10:36:05.471Z">
+<meta property="og:updated_time" content="2019-10-14T03:09:39.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springboot的configuration跟auto-configuration的区别。">
-<meta name="twitter:description" content="spring-boot提倡通过annotation来进行bean的配置，现在spring-boot里面常用的两种创建bean的方式有auto-configuration和configuration两种方式。 1、configuration配置的使用。在配置文件(添加@configuration的类)跟启动类在同个包路径下可用直接被扫描，因为springbootApplication注解自带Comp">
+<meta name="twitter:title" content="vim使用">
+<meta name="twitter:description" content="入门操作1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存操作提升2、 :set showmode+回车 即可显示提示。3、粘贴复制删除等操作123456789----命令模式：----yy	复制光标所在行2yy	复制光标所在行开始的2行p	粘贴dd	删除光标所在行（实际是剪切）3dd	删除光标所在行开始的3行（剪切）x	删除当前光标所在的字符X">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -157,39 +157,35 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-springboot-configuration" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-user-vim" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      springboot的configuration跟auto-configuration的区别。
+      vim使用
     </h1>
   
 
         
-        <a href="/2018/11/18/springboot-configuration/" class="archive-article-date">
-  	<time datetime="2018-11-18T09:11:10.057Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
+        <a href="/2019/10/14/user-vim/" class="archive-article-date">
+  	<time datetime="2019-10-14T03:17:12.444Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>spring-boot提倡通过annotation来进行bean的配置，现在spring-boot里面常用的两种创建bean的方式有auto-configuration和configuration两种方式。</p>
-<h3 id="1、configuration配置的使用。"><a href="#1、configuration配置的使用。" class="headerlink" title="1、configuration配置的使用。"></a>1、configuration配置的使用。</h3><p>在配置文件(添加@configuration的类)跟启动类在同个包路径下可用直接被扫描，因为springbootApplication注解自带ComponentScan,不需要在main方法添加扫描器。<br><a id="more"></a></p>
-<p>注解SpringBootApplication源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">@Inherited</span><br><span class="line">@SpringBootConfiguration</span><br><span class="line">@EnableAutoConfiguration</span><br><span class="line">@ComponentScan(</span><br><span class="line">    excludeFilters = &#123;@Filter(</span><br><span class="line">    type = FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;TypeExcludeFilter.class&#125;</span><br><span class="line">), @Filter(</span><br><span class="line">    type = FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;AutoConfigurationExcludeFilter.class&#125;</span><br><span class="line">)&#125;</span><br><span class="line">)</span><br><span class="line">public @interface SpringBootApplication &#123;</span><br><span class="line">    @AliasFor(</span><br><span class="line">        annotation = EnableAutoConfiguration.class,</span><br><span class="line">        attribute = &quot;exclude&quot;</span><br><span class="line">    )</span><br><span class="line">	···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>但如果多模块、jar形式或者不在通过包路径下就需要添加自定义类扫描器，在启动的时候使用@ComponentScan注解会扫描包(路径可以指定，默认的情况下就是这个目录所在的包开始扫描)，这个注解扫到@configuration注解以后，就会初始化这个类下面所有加了@bean的方法，并初始化这个bean</p>
-<p>在application中添加扫描<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class demo &#123;</span><br><span class="line">public static void main(String []args) &#123;</span><br><span class="line">		···</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>定义configuration的配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@Slf4j</span><br><span class="line">public class BeanConfig &#123;  </span><br><span class="line">  @Bean  </span><br><span class="line">  public BeanConfiguration beanConfig() &#123; </span><br><span class="line">    log.info(&quot;log bean config&quot;);    </span><br><span class="line">    return new BeanConfiguration();  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2、Auto-configuration配置的使用"><a href="#2、Auto-configuration配置的使用" class="headerlink" title="2、Auto-configuration配置的使用"></a>2、Auto-configuration配置的使用</h3><p>spring-boot有一个@EnableAutoConfiguration注解，他通过读取spring.factories文件里面的EnableAutoConfiguration下面指定的类，来初始化指定类下面的所有加了@bean的方法，并初始化这个bean<br>查看下源码</p>
-<p>@EnableAutoConfiguration<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import(AutoConfigurationImportSelector.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableAutoConfiguration &#123;</span><br><span class="line">    String ENABLED_OVERRIDE_PROPERTY = <span class="string">"spring.boot.enableautoconfiguration"</span>;</span><br><span class="line">    Class&lt;?&gt;[] exclude() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">    String[] excludeName() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看到有个Import引入类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public String[] selectImports(AnnotationMetadata annotationMetadata) &#123;</span><br><span class="line">        if (!isEnabled(annotationMetadata)) &#123;</span><br><span class="line">            return NO_IMPORTS;</span><br><span class="line">        &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader</span><br><span class="line">                    .loadMetadata(this.beanClassLoader);</span><br><span class="line">            AnnotationAttributes attributes = getAttributes(annotationMetadata);</span><br><span class="line">            List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,</span><br><span class="line">                    attributes);</span><br><span class="line">            configurations = removeDuplicates(configurations);</span><br><span class="line">            configurations = sort(configurations, autoConfigurationMetadata);</span><br><span class="line">            Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);</span><br><span class="line">            checkExcludedClasses(configurations, exclusions);</span><br><span class="line">            configurations.removeAll(exclusions);</span><br><span class="line">            configurations = filter(configurations, autoConfigurationMetadata);</span><br><span class="line">            fireAutoConfigurationImportEvents(configurations, exclusions);</span><br><span class="line">            return configurations.toArray(new String[configurations.size()]);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (IOException ex) &#123;</span><br><span class="line">            throw new IllegalStateException(ex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>看如下代码，获取类路径下spring.factories下key为EnableAutoConfiguration全限定名对应值<br>List<string> configurations = getCandidateConfigurations(annotationMetadata,<br>attributes);<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,</span><br><span class="line">            AnnotationAttributes attributes) &#123;</span><br><span class="line">        List&lt;String&gt; <span class="keyword">configurations</span> = SpringFactoriesLoader.loadFactoryNames(</span><br><span class="line">                getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());</span><br><span class="line">        Assert.notEmpty(<span class="keyword">configurations</span>,</span><br><span class="line">                <span class="string">"No auto configuration classes found in META-INF/spring.factories. If you "</span></span><br><span class="line">                        + <span class="string">"are using a custom packaging, make sure that file is correct."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">configurations</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">Class</span>&lt;?&gt; getSpringFactoriesLoaderFactoryClass() &#123;</span><br><span class="line">        <span class="keyword">return</span> EnableAutoConfiguration.<span class="keyword">class</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></string></p>
-<p>getCandidateConfigurations会到classpath下的读取META-INF/spring.factories文件的配置，并返回一个字符串数组。<br>查看下spring.factories<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Auto Configure</span></span><br><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=<span class="keyword">com</span>.ylzinfo.ms.abc,<span class="keyword">com</span>.ylzinfo.ms.bbc</span><br></pre></td></tr></table></figure></p>
-<h3 id="3、两者差异"><a href="#3、两者差异" class="headerlink" title="3、两者差异"></a>3、两者差异</h3><p>初始化的时机configuration初始化的方式总是在auto-configuration初始化方式之前<br>configuration初始化的顺序和扫描的过程相关，并不能进行有效的进行指定，不方便确定文件加载的顺序<br>auto-configuration可以通过@AutoConfigureAfter  @AutoConfigureBefore 和 @AutoConfigureOrder来指定类的加载顺序<br>configuration初始化会先初始化所有被扫到加了@Configuration文件的@PostConstruct注解然后再初始化这些文件里面的@Bean注解，但是auto-configuration是根据文件来进行初始化的，所以会初始化完一个文件的@PostConstruct注解然后再初始化这个文件的@Bean注解，然后再接着处理另外的文件。<br>所以需要提供bean给其他jar包进行使用的时候，最好使用 auto-configuration 方式（spring-boot-starters里面的都是通过这种方式来进行提供的，他的所有初始化的过程全部在spring-boot-autoconfigure项目中），因为能更好的控制类文件的加载顺序。有助于维护更佳复杂的项目。<br>另外需要注意一点的就是，如果auto-configuration提供的类名称在扫描的路径之中，spring-boot会把这些类作为configuration先进行初始化了，然后@AutoConfigureAfter @AutoConfigureBefore 和 @AutoConfigureOrder 这类指定顺序的注解都会失效。</p>
-<h3 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h3><p>@EnableAutoConfiguration 作用从classpath中搜索所有META-INF/spring.factories配置文件然后，将其中org.springframework.boot.autoconfigure.EnableAutoConfiguration key对应的配置项加载到spring容器<br>只有spring.boot.enableautoconfiguration为true（默认为true）的时候，才启用自动配置<br>@EnableAutoConfiguration还可以进行排除，排除方式有2中，一是根据class来排除（exclude），二是根据class name（excludeName）来排除<br>其内部实现的关键点有<br>1）ImportSelector 该接口的方法的返回值都会被纳入到spring容器管理中<br>2）SpringFactoriesLoader 该类可以从classpath中搜索所有META-INF/spring.factories配置文件，并读取配置</p>
+        <h1 id="入门操作"><a href="#入门操作" class="headerlink" title="入门操作"></a>入门操作</h1><h2 id="1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存"><a href="#1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存" class="headerlink" title="1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存"></a>1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存</h2><h1 id="操作提升"><a href="#操作提升" class="headerlink" title="操作提升"></a>操作提升</h1><h2 id="2、-set-showmode-回车-即可显示提示。"><a href="#2、-set-showmode-回车-即可显示提示。" class="headerlink" title="2、 :set showmode+回车 即可显示提示。"></a>2、 :set showmode+回车 即可显示提示。</h2><h2 id="3、粘贴复制删除等操作"><a href="#3、粘贴复制删除等操作" class="headerlink" title="3、粘贴复制删除等操作"></a>3、粘贴复制删除等操作</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">----命令模式：----</span><br><span class="line">yy	复制光标所在行</span><br><span class="line"><span class="number">2</span>yy	复制光标所在行开始的<span class="number">2</span>行</span><br><span class="line">p	粘贴</span><br><span class="line">dd	删除光标所在行（实际是剪切）</span><br><span class="line"><span class="number">3</span>dd	删除光标所在行开始的<span class="number">3</span>行（剪切）</span><br><span class="line">x	删除当前光标所在的字符</span><br><span class="line">X（大写)	删除当前光标前一个字符</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="4、光标的移动"><a href="#4、光标的移动" class="headerlink" title="4、光标的移动"></a>4、光标的移动</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">----命令模式：----</span><br><span class="line"> </span><br><span class="line">h 左移   j 下移 k 上移  l 右移 （四个箭头也可以上下左右移动）</span><br><span class="line">H 当前屏幕第一行</span><br><span class="line">M 当前屏幕中间</span><br><span class="line">L 当前屏幕最后一行</span><br><span class="line">ctrl+f  往下翻页</span><br><span class="line">ctrl+<span class="selector-tag">b</span>  网上翻页</span><br><span class="line">G       定位到最后一行（整个文档最后一行）</span><br><span class="line"><span class="number">5</span>G      定位到第<span class="number">5</span>行</span><br><span class="line">gg      定位到第一行（整个文档第一行）</span><br><span class="line">w       跳到下一个单词</span><br><span class="line"><span class="selector-tag">b</span>       跳到上一个单词</span><br><span class="line">&#123;       移动到上一个代码块</span><br><span class="line">&#125;       移动到下一个代码块</span><br><span class="line">v、V    先按v再用上下箭头选中几行，再&gt;         这几行集体右移，再.继续右移 </span><br><span class="line">v、V    先按v再用上下箭头选中几行，再&lt;         这几行集体左移，再.继续左移</span><br></pre></td></tr></table></figure>
+<h2 id="5、底行模式"><a href="#5、底行模式" class="headerlink" title="5、底行模式"></a>5、底行模式</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">----底行模式：----</span><br><span class="line"> </span><br><span class="line">q！                不保存退出</span><br><span class="line">wq                 保存退出</span><br><span class="line"> </span><br><span class="line">%s/abc/<span class="number">123</span>/g       把全文的abc替换成<span class="number">123</span></span><br><span class="line"><span class="number">1</span>,<span class="number">10</span>s/abc/<span class="number">123</span>/g    把<span class="number">1</span><span class="number">-10</span>行的abc替换成<span class="number">123</span></span><br></pre></td></tr></table></figure>
+<h2 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h2><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">命令模式：</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">u</span>            <span class="comment">撤销</span></span><br><span class="line"><span class="comment">ctrl</span><span class="literal">+</span><span class="comment">r</span>       <span class="comment">反撤销（撤销u操作）</span></span><br><span class="line"><span class="comment">r</span>            <span class="comment">修改当前字符</span></span><br><span class="line"><span class="comment">R</span>            <span class="comment">从当前位置开始修改，按Esc返回</span></span><br><span class="line"><span class="comment">/</span>            <span class="comment">搜索，先输入/</span><span class="string">,</span><span class="comment">再输入搜索内容</span><span class="literal">+</span><span class="comment">回车。n、N表示上（下）一个搜索结果</span></span><br></pre></td></tr></table></figure>
+<h1 id="操作提升-1"><a href="#操作提升-1" class="headerlink" title="操作提升"></a>操作提升</h1><h2 id="7、批量插入、删除"><a href="#7、批量插入、删除" class="headerlink" title="7、批量插入、删除"></a>7、批量插入、删除</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="params">----</span>插入模式：<span class="params">----</span></span><br><span class="line">v	进入可视界面，通过上下选中需要操作的行</span><br><span class="line">ctrl+v	进行可视化块选中</span><br><span class="line">I	输入大写I进入操作界面，输入<span class="comment">#或者//进行注释</span></span><br><span class="line">esc	连续按两下esc，完成操作</span><br><span class="line"></span><br><span class="line"><span class="params">----</span>删除模式：<span class="params">----</span></span><br><span class="line">ctrl +v 进入块操作，选中你要删除的字符/行</span><br><span class="line">d	单个d删除字符，dd删除行</span><br></pre></td></tr></table></figure>
+<h2 id="8、-删除"><a href="#8、-删除" class="headerlink" title="8、 删除"></a>8、 删除</h2><p>对3的补充</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span>	删除一行</span><br><span class="line">ndd	删除以当行开始的n行</span><br><span class="line"><span class="built_in">dw</span>	删除以当前字符开始的一个字符，比如：abc,dwt。光标在a，<span class="built_in">dw</span>就删除abc</span><br><span class="line">ndw	删除以当前字符开始的n个字符</span><br><span class="line">d$、D	删除以当前字符开始的一行字符</span><br><span class="line">d)	删除到下一句的开始</span><br><span class="line">d&#125;	删除到下一段的开始</span><br><span class="line">d回车	删除<span class="number">2</span>行</span><br><span class="line">全部删除：按esc后，然后dG</span><br></pre></td></tr></table></figure>
+<h2 id="9、复制多行"><a href="#9、复制多行" class="headerlink" title="9、复制多行"></a>9、复制多行</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">方法1：（强烈推荐）</span><br><span class="line">：9，15 <span class="keyword">copy</span> 16  或 ：9，15 co 16	将第9行至第15行的数据，复制到第16行</span><br><span class="line">：9，15 <span class="keyword">move</span> 16  或 :9,15 <span class="keyword">m</span> 16 		将第9行到第15行的文本内容到第16行的后面 </span><br><span class="line"></span><br><span class="line">方法2：</span><br><span class="line">光标移动到结束行，<span class="keyword">ma</span></span><br><span class="line">光标移动到起始行,输入y'a</span><br><span class="line">光标移动到需要复制的行，输入p,行前复制则输入大写P</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">全部复制：按esc后，然后ggyG</span><br><span class="line">全选高亮显示：按esc后，然后ggvG或者ggVG</span><br></pre></td></tr></table></figure>
 
       
 
@@ -234,11 +230,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">configuration、autoconfiguration</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
         		</li>
       		
 		</ul>
@@ -294,7 +286,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aQY7CMBAEQP7/afa6EkroHtssWlVOCEhw+WAPPX484uv563p95/XT+7vuX78+4f47Gy48PDy8haFfDTdnXH2aT9b9OPMx4+Hh4Z3m5Ytyvj28+eFg6MkG88aCh4eH9wW8ZGlOyt+8XMbDw8P7H7yEmk9NO2V4eHh438CbPS7PUdvSfBYi4+Hh4X2Gt3eIn3l9pL+Hh4eHt9xVb8PZtjhu22n1M/Hw8PAO8PIFd1bCLoUIZQvt8ggCHh4e3lZevjTnUUU+0JUNKSq+8fDw8D7Oy1tc+ZYwy0uG9+Lh4eEd4+XtqHXY/RNm90YxBB4eHt4mXnvE6n4LyYfSLvcbOnt4eHh4m3jrzfu2rTU7hjU8eoWHh4f3EV6LmSUAK7FF8T4eHh7eAd6uSCK5az2ubScIDw8P7wSvbWvNIoO65b8pOsHDw8M7zctL55XieBZztMV3faYMDw8PbxMvAbcB7q7jBUUMgYeHh7eVN2tBzcKF5KhW8ivP4MLDw8M7x5vFEEkp3LJzfBF84OHh4R3jtQ+6H9xKiJBMZV7c4+Hh4Z3gJUFDe1ygDR3yMnrWfsPDw8Pby2tj0ySoTZbyldi32Kjw8PDwDvPy1v6Mt3JgaxiI4OHh4R3grSzrs5Z//oRtMQceHh7eMd6sYb8SOuQldTKqpS/h4eHhjXizBn++oLdx8CyqeFNS4+Hh4W3l5Yx2M2hD4faKwgg8PDy8TbxneeWF7+zTJJzNtyg8PDy8E7x28W0j2uQJ+STmDbnh3oKHh4cX82aBQtu+apFtyX6JxMPDwzvGywvcZApWmmezNlh0MgIPDw/vj3h58ykfdL6FtE01PDw8vG/gzaLSWVE++862khoPDw/vltfe3B4vaJf4lQYYHh4e3mneyh/+vGGfT0ce+z52XXh4eHgp7wfzW9pP1NtYewAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS24CMRAFQO5/6ck6ihjes4dItssrFAh2zaLpj1+veF1/1rt3k88n//X6xsLAwFiWcd2u+w3a/8ofQX42DAyMcxjvItj96/vvibZ/aC8MDAyM/HX+l3ZfDAwMjJbxLryOFcB5KomBgXEyIylH7481lgjmj+yxWhwDA2NBRt51///XX5lvYGBgLMW4ytUG3/ZY19DCwMDYm5Fv0w4p8+8cY2NgYJzJaEvH9qLYzLWwKGRjYGBszUgCYt4sS5r++eWwdjiBgYGxK6Nt7n87ELchGwMDY29GPkpMUrTkssXY4/hQTmNgYBzDmDlE+yCScUISvqMtMTAwFmc8dUdj7HG0jbYPPwAYGBgHMMYubz3VRGsZxQgTAwNjccbYsebbZ0nCV6SJGBgYWzPu3863uYLVJotTd0YwMDA2Ysxcw2qDcv7I8jTxV2qIgYGxNSPfLE/U2m+bavxhYGBszZg/XFsMt5cqHs52MTAwlmUUF7Cmr2WMAaLSGgMD42BGm8bNN9rGRqoYGBgnMNq2Wlset6PKtgDGwMA4gfFUqytPKJN084EiFgMDY3HGVa75MWRb3Na5LQYGxnaMsTA6H4jz1n9e6GJgYOzNyIPsWKM/yeLahl3964GBgbEFYybwzbTbxorYt6UsBgYGxtCosh1etp/EwMDAyA80X8S2F8WmUkMMDIwFGWPDgGT7fGDQBlwMDIxzGDM3NRLezIBzrITGwMDYiPEDCT10cpJck/kAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,9 +300,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2019/10/14/eureka-config/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用eureka注册中心
+        
+      </div>
+    </a>
   
-    <a href="/2018/10/08/linux-v2ray-client/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">在linux使用v2ray进行翻墙</div>
+  
+    <a href="/2019/09/16/cmd_wifi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">windows通过命令获取连接过的所有wifi和密码</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -341,7 +342,7 @@ var _hmt = _hmt || [];
 
   
   <div id="SOHUCS"></div> 
-<!--<div id="SOHUCS" sid="springboot-configuration"></div>  -->
+<!--<div id="SOHUCS" sid="user-vim"></div>  -->
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytFnM0Gz"; 
@@ -361,7 +362,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Rogchen
+    		&copy; 2019 Rogchen
     	</div>
       	<div class="footer-right">
       		<!--<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten-->
@@ -441,10 +442,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">draft</a>
               </li>
              
@@ -461,6 +458,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">springcloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
@@ -469,11 +490,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">md</a>
+                <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">ll</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,18 +503,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ll</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,7 +518,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">configuration、autoconfiguration</a>
+                <a href="javascript:void(0)" class="js-tag color3">md</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">configuration</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoconfiguration</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
             
             <div class="clearfix"></div>

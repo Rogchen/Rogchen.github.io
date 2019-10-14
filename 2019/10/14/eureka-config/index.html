@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>Archives: 2018/11 | Rogchen的博客</title>
+  <title>使用eureka注册中心 | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rogchen的博客">
-<meta property="og:url" content="https://rogchen.github.com/archives/2018/11/index.html">
+  <meta name="description" content="1、单机下  推荐使用idea快速构造springboot工程，自动引入相关配置文件。 引入相关pom文件1234&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka-server&amp;lt;/artifactId">
+<meta name="keywords" content="eureka,springcloud,微服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用eureka注册中心">
+<meta property="og:url" content="https://rogchen.github.com/2019/10/14/eureka-config/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta property="og:description" content="1、单机下  推荐使用idea快速构造springboot工程，自动引入相关配置文件。 引入相关pom文件1234&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka-server&amp;lt;/artifactId">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-31T09:50:44.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rogchen的博客">
-<meta name="twitter:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta name="twitter:title" content="使用eureka注册中心">
+<meta name="twitter:description" content="1、单机下  推荐使用idea快速构造springboot工程，自动引入相关配置文件。 引入相关pom文件1234&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka-server&amp;lt;/artifactId">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -156,64 +157,205 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-eureka-config" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/18/springboot-configuration/" class="archive-article-date">
-  	<time datetime="2018-11-18T09:11:10.057Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/18/springboot-configuration/">springboot的configuration跟auto-configuration的区别。</a>
+    <h1 class="article-title" itemprop="name">
+      使用eureka注册中心
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/10/14/eureka-config/" class="archive-article-date">
+  	<time datetime="2019-10-14T03:18:04.313Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、单机下"><a href="#1、单机下" class="headerlink" title="1、单机下"></a>1、单机下</h2><p>  推荐使用idea快速构造springboot工程，自动引入相关配置文件。</p>
+<p>引入相关pom文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>在启动文件***Application.java上添加注解</p>
+<p>  <code>@EnableEurekaServer</code></p>
+<p>配置注册中心配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#eureka配置信息</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  server:</span></span><br><span class="line"><span class="attr">    enable-self-preservation:</span> <span class="literal">false</span> <span class="comment">#注册中心自我保护机制-true打开默认true,false关闭</span></span><br><span class="line"><span class="attr">    eviction-interval-timer-in-ms:</span> <span class="number">60000</span> <span class="comment">#修改检查失效服务的时间。</span></span><br><span class="line"><span class="attr">  instance:</span></span><br><span class="line"><span class="attr">    prefer-ip-address:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">rogchen.net</span></span><br><span class="line"><span class="attr">  client:</span></span><br><span class="line"><span class="attr">    registerWithEureka:</span> <span class="literal">true</span> <span class="comment">#false:不作为一个客户端注册到注册中心</span></span><br><span class="line"><span class="attr">    fetchRegistry:</span> <span class="literal">false</span> <span class="comment">#为true时，可以启动，但报异常：Cannot execute request on any known server</span></span><br><span class="line"><span class="comment">#    service-url:</span></span><br><span class="line"><span class="comment">#      defaultZone: http://$&#123;eureka.instance.hostname&#125;:10801/eureka/</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2、集群化部署"><a href="#2、集群化部署" class="headerlink" title="2、集群化部署"></a>2、集群化部署</h2><p>集群化部署跟单机区别在于本身也相当于一个服务注册到另外的eureka上去。<br>所以需要在启动类上新增另个注解。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@EnableEurekaClient</span></span><br><span class="line"><span class="variable">@EnableDiscoveryClient</span></span><br></pre></td></tr></table></figure>
+<p>二选一都可.spring cloud中discovery service有许多种实现（eureka、consul、zookeeper等等），@EnableDiscoveryClient基于spring-cloud-commons, @EnableEurekaClient基于spring-cloud-netflix。<br>其实用更简单的话来说，就是如果选用的注册中心是eureka，那么就推荐@EnableEurekaClient，如果是其他的注册中心，那么推荐使用@EnableDiscoveryClient。</p>
+<p>另个差别就是在配置文件上面了。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  server:</span></span><br><span class="line">	<span class="comment">#注册中心自我保护机制-true打开,默认true,false关闭</span></span><br><span class="line"><span class="attr">    enable-self-preservation:</span> <span class="literal">true</span></span><br><span class="line">	<span class="comment">#修改检查失效服务的时间。</span></span><br><span class="line"><span class="attr">    eviction-interval-timer-in-ms:</span> <span class="number">60000</span></span><br><span class="line"><span class="attr">  instance:</span></span><br><span class="line"><span class="attr">    prefer-ip-address:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">rogchen.com</span></span><br><span class="line"><span class="attr">  client:</span></span><br><span class="line">    <span class="comment">#false:不作为一个客户端注册到注册中心,集群作为一个客户端应该true，默认true</span></span><br><span class="line"><span class="attr">    registerWithEureka:</span> <span class="literal">true</span> </span><br><span class="line">	 <span class="comment">#为true时，可以启动，但报异常：Cannot execute request on any known server,</span></span><br><span class="line">	 <span class="comment">#集群情况下必须设置为true。</span></span><br><span class="line"><span class="attr">    fetchRegistry:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    service-url:</span></span><br><span class="line">	<span class="comment">#另个或者多个eurek的注册地址，使用','分割</span></span><br><span class="line"><span class="attr">      defaultZone:</span> <span class="attr">http://$&#123;eureka.instance.hostname&#125;:10801/eureka/</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">eureka</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">configuration、autoconfiguration</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">springcloud</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS3KEMAxFUfa/6c40GQD3STjVyNejVNp8DgOVJOs48PqcrN+/nu0n9+RXtZYMGTJey/hcrrM95MGdnfzdZMiQsQ8jvfV10LwOxLVn3dxHhgwZMsCrX98HBU0ZMmTIWBBw06KUF8AyZMiQUStiyX7SYiNBeWEtLkOGjBcyeNf9//9ecr4hQ4aMVzE+4UoLTh4c04D+584yZMgYzeABLh2zeCqI80ENGTJkTGXwsa20sKyVtWf7b2AyZMgYzSBpGUn1+NAYT/V4y0+GDBl7MnhAXHF4wAtgGTJk7Mbgo121JJKMZXQOO2XIkDGVkSaCnSKTJKA86Tz4JhkyZLyc8dTLLSlKw7RVhgwZUxm1dLDW7u8cTtywZciQMZqRBrtOudsZOENpogwZMoYy0rYXL3p5UCahOS5fZciQMZTBjyfjRhh+VvEwVYYMGZsxeLDrXNUvfY/0i8qQIWMQo5bM1QrgzrCFDBky9mGQhjt/IY7sFLE3XUMZMmSMZpCQ1x8RSz8QuUqGDBm7MdJgyhNHEpTJr2jYQoYMGUMZ8WXt9lmtuXYTcGXIkDGOsSLU8hZeLcj+U1IoQ4aMr2HwxQ8seWBN78YbeTJkyJjHeKpk7QyE1QbOZMiQsRujE/jSgTN+eBmEfhkyZMhohMXOxwqoMmTIkBHWxOlRZW3s4+HUUIYMGV/PqI1EpIC00F3SbpMhQ8YLGbURh85/+DFDrYSWIUPGIMYPZ88ZBqj4E8YAAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/10/14/user-vim/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vim使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS"></div> 
+<!--<div id="SOHUCS" sid="eureka-config"></div>  -->
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytFnM0Gz"; 
+var conf = "364b2ce85a0a34638cf8a1e4411a7d40"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -223,7 +365,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Rogchen
+    		&copy; 2019 Rogchen
     	</div>
       	<div class="footer-right">
       		<!--<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten-->
@@ -237,8 +379,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
@@ -303,10 +445,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">draft</a>
               </li>
              
@@ -323,6 +461,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">springcloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
@@ -331,11 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">md</a>
+                <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">ll</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -344,18 +506,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ll</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -371,7 +521,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">configuration、autoconfiguration</a>
+                <a href="javascript:void(0)" class="js-tag color3">md</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">configuration</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoconfiguration</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
             
             <div class="clearfix"></div>
