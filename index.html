@@ -158,33 +158,30 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-linux-ll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-eureka-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/linux-ll/">在linux上安装使用ll命令</a>
+      <a class="article-title" href="/2019/10/14/eureka-config/">使用eureka注册中心</a>
     </h1>
   
 
         
-        <a href="/2019/09/16/linux-ll/" class="archive-article-date">
-  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+        <a href="/2019/10/14/eureka-config/" class="archive-article-date">
+  	<time datetime="2019-10-14T03:18:04.313Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ll并不是linux下一个基本的命令，它实际上是ls -l的一个别名。<br>Ubuntu默认不支持命令ll，必须用 ls -l，这样使用起来不是很方便。<br>如果要使用此命令，可以作如下修改：</p>
-<ul>
-<li>打开 ~/.bashrc<br>找到 #alias ll=’ls -l’，去掉前面的#就可以了。（关闭原来的终端才能使命令生效）<br>这样个人用户可以使用ll命令，当切换成超级用户后，使用ll命令时提示找不到命令，那是因为你只是修改了个人用户的配置，所以，切换成root后做相同的操作即可解决问题。<br>启示：我们可以通过修改~/.bashrc添加任何其他的命令别名。</li>
-</ul>
-<h2 id="还有另外一种实现方法："><a href="#还有另外一种实现方法：" class="headerlink" title="还有另外一种实现方法："></a>还有另外一种实现方法：</h2>
+        <h2 id="1、单机下"><a href="#1、单机下" class="headerlink" title="1、单机下"></a>1、单机下</h2><p>  推荐使用idea快速构造springboot工程，自动引入相关配置文件。</p>
+<p>引入相关pom文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
         
-          <a class="article-more-a" href="/2019/09/16/linux-ll/#more">more >></a>
+          <a class="article-more-a" href="/2019/10/14/eureka-config/#more">more >></a>
         
       
 
@@ -198,15 +195,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">eureka</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ls -l</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">springcloud</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ll</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
         		</li>
       		
 		</ul>
@@ -216,7 +213,83 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/linux-ll/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/14/eureka-config/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-user-vim" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/14/user-vim/">vim使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/14/user-vim/" class="archive-article-date">
+  	<time datetime="2019-10-14T03:17:12.444Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="入门操作"><a href="#入门操作" class="headerlink" title="入门操作"></a>入门操作</h1><h2 id="1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存"><a href="#1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存" class="headerlink" title="1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存"></a>1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存</h2><h1 id="操作提升"><a href="#操作提升" class="headerlink" title="操作提升"></a>操作提升</h1><h2 id="2、-set-showmode-回车-即可显示提示。"><a href="#2、-set-showmode-回车-即可显示提示。" class="headerlink" title="2、 :set showmode+回车 即可显示提示。"></a>2、 :set showmode+回车 即可显示提示。</h2><h2 id="3、粘贴复制删除等操作"><a href="#3、粘贴复制删除等操作" class="headerlink" title="3、粘贴复制删除等操作"></a>3、粘贴复制删除等操作</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">----命令模式：----</span><br><span class="line">yy	复制光标所在行</span><br><span class="line"><span class="number">2</span>yy	复制光标所在行开始的<span class="number">2</span>行</span><br><span class="line">p	粘贴</span><br><span class="line">dd	删除光标所在行（实际是剪切）</span><br><span class="line"><span class="number">3</span>dd	删除光标所在行开始的<span class="number">3</span>行（剪切）</span><br><span class="line">x	删除当前光标所在的字符</span><br><span class="line">X（大写)	删除当前光标前一个字符</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/10/14/user-vim/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/14/user-vim/">展开全文 >></a>
         </p>
       
 
@@ -326,87 +399,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-hexo-more" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/hexo-more/">让hexo的首页只显示文章的部分内容而不是全部</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/16/hexo-more/" class="archive-article-date">
-  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？
-</code></pre><p>我们通过下面的三种方式实现:</p>
-<h2 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h2><hr>
-<p>用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：</p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">1 </span># Automatically Excerpt. <span class="keyword">Not</span> recommend.</span><br><span class="line"><span class="symbol">2 </span># Please use &lt;!-- more --&gt; in the post <span class="keyword">to</span> control excerpt accurately.</span><br><span class="line"><span class="symbol">3 </span>auto_excerpt:</span><br><span class="line"><span class="symbol">4 </span>  enable: false</span><br><span class="line"><span class="symbol">5 </span>  length: <span class="number">150</span></span><br></pre></td></tr></table></figure>
-<p>把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。<br>
-        
-          <a class="article-more-a" href="/2019/09/16/hexo-more/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/hexo-more/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-git-learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -460,6 +452,169 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/16/git-learning/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/16/hello-world/" class="archive-article-date">
+  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hexo-more" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/hexo-more/">让hexo的首页只显示文章的部分内容而不是全部</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/16/hexo-more/" class="archive-article-date">
+  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？
+</code></pre><p>我们通过下面的三种方式实现:</p>
+<h2 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h2><hr>
+<p>用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">1 </span># Automatically Excerpt. <span class="keyword">Not</span> recommend.</span><br><span class="line"><span class="symbol">2 </span># Please use &lt;!-- more --&gt; in the post <span class="keyword">to</span> control excerpt accurately.</span><br><span class="line"><span class="symbol">3 </span>auto_excerpt:</span><br><span class="line"><span class="symbol">4 </span>  enable: false</span><br><span class="line"><span class="symbol">5 </span>  length: <span class="number">150</span></span><br></pre></td></tr></table></figure>
+<p>把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。<br>
+        
+          <a class="article-more-a" href="/2019/09/16/hexo-more/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/hexo-more/">展开全文 >></a>
         </p>
       
 
@@ -672,178 +827,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/16/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-logger-Info" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/logger-Info/">通过注解和拦截器或aop实现日志</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/16/logger-Info/" class="archive-article-date">
-  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、使用注解和拦截器"><a href="#一、使用注解和拦截器" class="headerlink" title="一、使用注解和拦截器"></a>一、使用注解和拦截器</h1><hr>
-<h3 id="为什么使用拦截器而不是用过滤器呢？"><a href="#为什么使用拦截器而不是用过滤器呢？" class="headerlink" title="为什么使用拦截器而不是用过滤器呢？"></a>为什么使用拦截器而不是用过滤器呢？</h3><ul>
-<li>拦截器是基于Java的反射机制的，而过滤器是基于函数回调。</li>
-<li>拦截器不依赖与servlet容器，过滤器依赖与servlet容器。</li>
-<li>拦截器可以获取IOC容器中的各个bean，而过滤器就不行，这点很重要，在拦截器里注入一个service，可以调用业务逻辑。</li>
-<li>拦截器可以访问action上下文、值栈里的对象。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/09/16/logger-Info/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">注解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">拦截器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/logger-Info/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -954,7 +937,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color2">eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">springcloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -963,6 +954,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -982,6 +977,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
               </li>
              
@@ -991,14 +994,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1015,6 +1010,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
             
             <div class="clearfix"></div>

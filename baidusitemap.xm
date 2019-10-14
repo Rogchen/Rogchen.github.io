@@ -4,6 +4,44 @@
 
     
   <url>
+    <loc>https://rogchen.github.com/2019/10/14/user-vim/</loc>
+    <lastmod>2019-10-14T03:09:39.816Z</lastmod>
+    <data>
+        <display>
+        <title>vim使用</title>
+        <pubTime>2019-10-14T03:17:12.444Z</pubTime>
+        
+        <tag>vim</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://rogchen.github.com/2019/10/14/eureka-config/</loc>
+    <lastmod>2019-07-31T09:50:44.616Z</lastmod>
+    <data>
+        <display>
+        <title>使用eureka注册中心</title>
+        <pubTime>2019-10-14T03:18:04.313Z</pubTime>
+        
+        <tag>eureka</tag>
+         
+        <tag>springcloud</tag>
+         
+        <tag>微服务</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://rogchen.github.com/2019/09/16/git-learning/</loc>
     <lastmod>2019-01-09T15:58:30.972Z</lastmod>
     <data>
