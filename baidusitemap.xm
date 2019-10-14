@@ -5,11 +5,11 @@
     
   <url>
     <loc>https://rogchen.github.com/2019/10/14/user-vim/</loc>
-    <lastmod>2019-10-14T03:09:39.816Z</lastmod>
+    <lastmod>2019-10-14T03:26:50.533Z</lastmod>
     <data>
         <display>
         <title>vim使用</title>
-        <pubTime>2019-10-14T03:17:12.444Z</pubTime>
+        <pubTime>2019-10-14T03:26:50.537Z</pubTime>
         
         <tag>vim</tag>
          
