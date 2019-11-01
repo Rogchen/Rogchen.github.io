@@ -4,6 +4,63 @@
 
     
   <url>
+    <loc>https://rogchen.github.com/2019/11/01/linux-port/</loc>
+    <lastmod>2019-11-01T07:05:58.504Z</lastmod>
+    <data>
+        <display>
+        <title>linux不起服务占用一个端口</title>
+        <pubTime>2019-11-01T07:05:58.516Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://rogchen.github.com/2019/10/23/nginx-user/</loc>
+    <lastmod>2019-10-23T08:49:07.110Z</lastmod>
+    <data>
+        <display>
+        <title>nginx安装和使用</title>
+        <pubTime>2019-10-23T08:49:07.118Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+        <tag>限流</tag>
+         
+        <tag>安装</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://rogchen.github.com/2019/10/15/user-aliyun-docker/</loc>
+    <lastmod>2019-10-15T06:10:54.852Z</lastmod>
+    <data>
+        <display>
+        <title>使用私有服镜像仓库</title>
+        <pubTime>2019-10-15T06:10:54.864Z</pubTime>
+        
+        <tag>aliyun</tag>
+         
+        <tag>repository</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://rogchen.github.com/2019/10/14/user-vim/</loc>
     <lastmod>2019-10-14T03:26:50.533Z</lastmod>
     <data>
