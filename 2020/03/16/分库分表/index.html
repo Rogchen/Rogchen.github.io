@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>Rogchen的博客</title>
+  <title>数据库的分库分表操作 | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jiugongge_demo 	 		*{ 			margin:0; 			padding: 0; 		} 		table{ 			margin: 30px; 			border-collapse: collapse; 		} 		#test0{ 			margin: 30px; 			width: 200px; 			height: 200px; 		} 		#test0 div{">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rogchen的博客">
-<meta property="og:url" content="https://rogchen.github.com/assets/demo/jiugongge_demo.html">
+  <meta name="description" content="1、前言 很早就听说了分库分表操作，但是一直没记住，这里只是单纯做个笔记。 2、读写分离将数据库分为主从库，一个主库（Master）用于写数据，多个从库（Slaver）进行轮询读取数据的过程，主从库之间通过某种通讯机制进行数据的同步，是一种常见的数据库架构。读写分离有个问题就是同步问题，有时候我们想要及时返回数据呢？所以我们经常是把一些着急返回的通过代码形式从主库去获取。 2.1、 为什么要读写分">
+<meta name="keywords" content="数据库,分库,分表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库的分库分表操作">
+<meta property="og:url" content="https://rogchen.github.com/2020/03/16/分库分表/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="jiugongge_demo 	 		*{ 			margin:0; 			padding: 0; 		} 		table{ 			margin: 30px; 			border-collapse: collapse; 		} 		#test0{ 			margin: 30px; 			width: 200px; 			height: 200px; 		} 		#test0 div{">
+<meta property="og:description" content="1、前言 很早就听说了分库分表操作，但是一直没记住，这里只是单纯做个笔记。 2、读写分离将数据库分为主从库，一个主库（Master）用于写数据，多个从库（Slaver）进行轮询读取数据的过程，主从库之间通过某种通讯机制进行数据的同步，是一种常见的数据库架构。读写分离有个问题就是同步问题，有时候我们想要及时返回数据呢？所以我们经常是把一些着急返回的通过代码形式从主库去获取。 2.1、 为什么要读写分">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-14T07:00:10.946Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/fenku.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/spcf1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/fenbiao.png">
+<meta property="og:updated_time" content="2020-03-16T08:13:15.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rogchen的博客">
-<meta name="twitter:description" content="jiugongge_demo 	 		*{ 			margin:0; 			padding: 0; 		} 		table{ 			margin: 30px; 			border-collapse: collapse; 		} 		#test0{ 			margin: 30px; 			width: 200px; 			height: 200px; 		} 		#test0 div{">
+<meta name="twitter:title" content="数据库的分库分表操作">
+<meta name="twitter:description" content="1、前言 很早就听说了分库分表操作，但是一直没记住，这里只是单纯做个笔记。 2、读写分离将数据库分为主从库，一个主库（Master）用于写数据，多个从库（Slaver）进行轮询读取数据的过程，主从库之间通过某种通讯机制进行数据的同步，是一种常见的数据库架构。读写分离有个问题就是同步问题，有时候我们想要及时返回数据呢？所以我们经常是把一些着急返回的通过代码形式从主库去获取。 2.1、 为什么要读写分">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/fenku.png">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -157,164 +161,47 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-分库分表" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据库的分库分表操作
+    </h1>
+  
+
+        
+        <a href="/2020/03/16/分库分表/" class="archive-article-date">
+  	<time datetime="2020-03-16T08:13:15.292Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>jiugongge_demo</title>
-	<style>
-		*{
-			margin:0;
-			padding: 0;
-		}
-		table{
-			margin: 30px;
-			border-collapse: collapse;
-		}
-		#test0{
-			margin: 30px;
-			width: 200px;
-			height: 200px;
-		}
-		#test0 div{
-			width: 50px;
-			height: 50px;
-			float: left;
-			background: #eee;
-			border: 5px solid #00f;
-			text-align: center;
-			line-height: 50px;
-			color: #090;
-			position: relative;
-		}
-		#test0 .lr_indent{
-			margin-left: -5px;
-			margin-right: -5px;
-		}
-		#test0 .tb_indent{
-			margin-top: -5px;
-			margin-bottom: -5px;
-		}
-		#test0 div:hover{
-			border: 5px solid #f00;
-			z-index: 999;
-			background: #eee;
-		}
-		#test1 td{
-			width: 50px;
-			height: 50px;
-			background: #eee;
-			position: relative;
-			border: 5px solid #00f;
-			text-align: center;
-		}
-		#test1 td span{
-			color: #090;
-			display:block;
-			width: 50px;
-			height: 50px;
-			position: absolute;
-			top: 0;
-			left: 0;
-			line-height: 50px;
-		}
-		#test1 td span:hover{
-			border: 5px solid #f00;
-			margin-top:-5px;
-			margin-left: -5px;
-		}
+        <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p> 很早就听说了分库分表操作，但是一直没记住，这里只是单纯做个笔记。</p>
+<h2 id="2、读写分离"><a href="#2、读写分离" class="headerlink" title="2、读写分离"></a>2、读写分离</h2><p>将数据库分为主从库，一个主库（Master）用于写数据，多个从库（Slaver）进行轮询读取数据的过程，主从库之间通过某种通讯机制进行数据的同步，是一种常见的数据库架构。读写分离有个问题就是同步问题，有时候我们想要及时返回数据呢？所以我们经常是把一些着急返回的通过代码形式从主库去获取。</p>
+<h3 id="2-1、-为什么要读写分离"><a href="#2-1、-为什么要读写分离" class="headerlink" title="2.1、 为什么要读写分离"></a>2.1、 为什么要读写分离</h3><p>大多数互联网数据操作往往都是读多写少，随着数据的增长，数据库的“读”会首先成为瓶颈。如果我们希望能线性地提升数据库的读性能和写性能，就需要让读写尽可能的不相互影响，各自为政。在使用读写分离之前我们应该考虑使用缓存能不能解决问题。然后再考虑对数据库按照 “读” 和 “写” 进行分组。读写分离意味着将一体的结构的进行分散，在数据量大、高并发的情景中要考虑以下这些问题</p>
+<a id="more"></a>
+<ol>
+<li>如何保证 Master 的高可用，故障转移，熔断限流等。</li>
+<li>读写操作的区分规则，代码层面如何处理好读命令和写命令，尽量无感知无业务入侵。</li>
+<li>数据一致性的容忍度。虽然是数据同步，但是由于网络的不确定性这仍然是一个不可忽视的问题。</li>
+</ol>
+<h2 id="3、分库"><a href="#3、分库" class="headerlink" title="3、分库"></a>3、分库</h2><p>数据库垂直拆分、数据库水平拆分 统称 分库。是指按照特定的条条件和维度，将同一个数据库中的数据拆分到多个数据库（主机）上面以达到分散单库（主机）负载的效果。这样我们变相地降低了数据集的大小，以空间换时间来提升性能。</p>
+<h3 id="3-1、-数据库垂直拆分"><a href="#3-1、-数据库垂直拆分" class="headerlink" title="3.1、 数据库垂直拆分"></a>3.1、 数据库垂直拆分</h3><p>数据库垂直拆分 指的是按照业务对数据库中的表进行分组，同组的放到一个新的数据库（逻辑上，并非实例）中。需要从实际业务出发将大业务分割成小业务。比如商城的整个业务中的 用户相关表，订单相关表，物流相关表 各自独立分类形成 用户系统数据库，订单系统数据库，物流系统数据库。<br><img src="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/fenku.png" alt="分库"></p>
+<p>这样带来了一些好处： （a）业务清晰，职责单一 （b）易维护，易扩展 （c）数据服务化 。 同时也有一些负面的作用：（a）提高了整个应用的复杂度，而且会形成跨库事务 （b）引发 “木桶效应”，任何一个短板有可能影响整个系统 （c）部分表关系不能 join 只能通过服务相互调用来维系。甚至由于网络问题引发数据不一致。</p>
+<p>在需要进行分库的情况下，通常可优先考虑垂直拆分。</p>
+<h3 id="3-2、-数据库水平拆分"><a href="#3-2、-数据库水平拆分" class="headerlink" title="3.2、 数据库水平拆分"></a>3.2、 数据库水平拆分</h3><p>在数据库垂直拆分后遇到单机数据库性能瓶颈之后，就可以考虑数据库水平拆分了。 之所以先垂直拆分才水平拆分，是因为垂直拆分后数据业务清晰而且单一，更加方便指定水平的标准。比如我们对商城业务垂直拆分后的 用户系统 进行水平拆分就比对整个商城业务进行水平拆分好找维度，我们可以根据用户注册时间的区间、用户的区域或者用户 ID 的范围、 hash 等条件，然后关联相关表的记录将数据进行拆分，如果放在整个商城业务上你是以用户为准还是以订单为准都不太好考虑。</p>
+<p>我们按照每100万为区间对用户系统水平拆分如下：<br><img src="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/spcf1.png" alt="分库"><br>这种拆分的好处在于： （a）单个库的容量可控 （b）单挑记录保证了数据完整性 （c）数据关系可以通过 join 维持 （d） 避免了跨库事务 ；缺点同样存在：（a）拆分规则对编码有一定的影响 （b）不同业务的分区交互需要统筹设计</p>
+<h2 id="4、-分表"><a href="#4、-分表" class="headerlink" title="4、 分表"></a>4、 分表</h2><p>分表也分为 数据表垂直拆分 和 数据表水平拆分 。</p>
+<h3 id="4-1、-数据表垂直拆分"><a href="#4-1、-数据表垂直拆分" class="headerlink" title="4.1、 数据表垂直拆分"></a>4.1、 数据表垂直拆分</h3><p>数据表垂直拆分就是纵向地把表中的列分成多个表，把表从“宽”变“窄”。一般遵循以下几个点进行拆分：</p>
+<p>冷热分离，把常用的列放在一个表，不常用的放在一个表。<br>大字段列独立存放<br>关联关系的列紧密的放在一起<br>我们把用户表中常用的和不常用的而且大字段分离成两张表：<br><img src="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/fenbiao.png" alt="分表"></p>
+<h3 id="4-2、-数据表的水平拆分"><a href="#4-2、-数据表的水平拆分" class="headerlink" title="4.2、 数据表的水平拆分"></a>4.2、 数据表的水平拆分</h3><p>表的水平拆分感觉跟库的水平拆分思想上都是一样的，只不过粒度不同。表结构维持不变。也就是说拆分后数据集的并集等于拆分前的数据集。理解了 3.2 章节 之后这个就没有什么可说的了。</p>
+<h2 id="5、-总结"><a href="#5、-总结" class="headerlink" title="5、 总结"></a>5、 总结</h2><p>这里简单阐述了几个数据库优化概念，在实际操作中往往会组合使用。我们在实际操作之前要做好数据量的预估，这样能够根据预测未来数据的增量来进行选型。业务数据增长较小，常用于表的拆分。增长特别大达到上万级别则可以选择分库，比如一些资金积分流水，历史记录之类的。有些时候并不是拆分完就万事大吉了，比如我们按照地区拆分后，A地区业务增长很快业绩很好，而B地区推广不力竞争激烈业绩萧条，造成了数据倾斜。也会影响分库分表的期望效果。这需要建立长效的监控预测机制来应对，甚至根据实际情况及时调整策略。数据拆分还面临分布式的很多问题，分布式事务，高可用，数据一致性，全局唯一性都是应该考虑的问题。</p>
 
-		#test2 td{
-			width: 50px;
-			height: 50px;
-			background: #eee;
-			border: 5px solid #00f;
-			text-align: center;
-			vertical-align: top;
-		}
-		#test2 td div{
-			position:relative;
-			width: 50px;
-			height: 50px;
-		}
-		#test2 td div span{
-			color: #090;
-			display:block;
-			width: 50px;
-			height: 50px;
-			position: absolute;
-			top: 0;
-			left: 0;
-			line-height: 50px;
-		}
-		#test2 td div span:hover{
-			border: 5px solid #f00;
-			margin-left: -5px;
-			margin-top: -5px;
-		}
-	</style>
-</head>
-<body>
-	<h2>1) div+负margin实现</h2>
-	<div id="test0">
-		<div>1</div>
-		<div class="lr_indent">2</div>
-		<div>3</div>
-		<div class="tb_indent">4</div>
-		<div class="lr_indent tb_indent">5</div>
-		<div class="tb_indent">6</div>
-		<div>7</div>
-		<div class="lr_indent">8</div>
-		<div>9</div>
-	</div>
-	<h2>2.1) table border-collapse: collapse实现</h2>
-	<div id="test1">
-		<table>
-			<tr>
-				<td><span>1</span></td>
-				<td><span>2</span></td>
-				<td><span>3</span></td>
-			</tr>
-			<tr>
-				<td><span>4</span></td>
-				<td><span>5</span></td>
-				<td><span>6</span></td>
-			</tr>
-			<tr>
-				<td><span>7</span></td>
-				<td><span>8</span></td>
-				<td><span>9</span></td>
-			</tr>
-		</table>
-	</div>
-	<h2>2.2) table思路改进</h2>
-	<div id="test2">
-		<table>
-			<tr>
-				<td><div><span>1</span></div></td>
-				<td><div><span>2</span></div></td>
-				<td><div><span>3</span></div></td>
-			</tr>
-			<tr>
-				<td><div><span>4</span></div></td>
-				<td><div><span>5</span></div></td>
-				<td><div><span>6</span></div></td>
-			</tr>
-			<tr>
-				<td><div><span>7</span></div></td>
-				<td><div><span>8</span></div></td>
-				<td><div><span>9</span></div></td>
-			</tr>
-		</table>
-	</div>
-</body>
-</html>
       
 
       
@@ -353,6 +240,25 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分表</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -403,7 +309,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aSXLDMAwEQP//08oDYskDQE5FZPOUcmlrHhAsfL3idVyuyTXXv9+8MDAwHsvIX399/e9nnr3l7Bvyd715DgYGxgaM/NHJXfnrky27/jYMDAyM6qN7gTjfPgwMDIzrx81/6b0FAwMDo9omSxK7ebH6xVocAwPjgYy86/73f39lvoGBgfEoxlFcvVQy/9yjtTAwMNZm9EaYdx2PSO7KE00MDIxVGb2idNL0z0viBICBgbEPI2/f5+2w6oAz2ZrT6zEwMDZjVA9M5Ly7EspRuw0DA+PhjPnBi0mwTlLMaAaLgYGxHKM6pJz8MjkWVhhwYmBgLMfohbxeUZqMM6sb9KaIxcDA2JKRN/Hz6rLXXItmsBgYGIsyqoVo70MnTb0PW4CBgbE0ozdo7DXsev385ggBAwNjIUa1ZZ+kcXnTLSlryxkuBgbGcoy8TV8tVielab5BpxgMDIzlGHcdBZsPEpKQenoXBgbGBox5NZyPJxN8uf2HgYGxMSMvXCfN/SNetw0yMTAwHshIwmUeKOdDzTy4Y2Bg7MCoHq3Ix5PVAxm9J2NgYKzNOIpr3ujvpYkfNhEDA2NpRjXM9RK7Sdo3OnKBgYGxECMPsncVtEkCWk4cMTAwNmDkhWj1+nv/A0SHLTAwMLZnzFtmCaaZvWJgYGDEB7bmw8tyUMbAwNiA0Stiq/cmATdvyd3WbsPAwPj3jMnhibxZlsB6gRsDA2Npxg/QQK1jSqzcIwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aS24DIRBFUe9/02RqKTG5r6AtUVxGlu3QHA8q1Of1wmu8rfd35p/+fv/Tzp/22bxkyJBxLGNMFz8o/yuC4U+RIUPGPQy+NQ+UBMlf/3NmGTJkyAgPnb7Dfz4ZMmTIqAVcss8cv3KVlCFDxj2M9BpXOzQHP5iLy5Ah40AGr7p///Uj/Q0ZMmQcxRjhSnerHSs+lQwZMloz+GP4OEXKrgVcGTJk3MZYeRhPR9OfhiS92+62MmTIOISRDoFxDN+BNwnQcJgMGTJaMNJxLpLcpp/WQrYMGTJuY6S3rDT55KEzvVDKkCHjBgZJHdNLIRkm4zsHZTgZMmS0ZpAvrY9k1Y6V/kwyZMjozdgVENN2Zno9RTvLkCGjHaNWSqsVyHj4Tgt5MmTI6MpIj1ULtbWQGgxbyJAh4wIGbz3ygtqukQs0DiJDhowLGLWxibS1uTdMB7VAGTJkHM5YbwyQsYldATe+JsqQIaMdgxf3B1i1ZJg0O1E4liFDRjtGbQxr4PXEZfSPE8qQIeMaxl7YHFz7tPi/QoYMGS0YJFGsFc54w2CpRChDhoymjBGuNMncFaDju60MGTIaMdLO4EpzcZ64poMdxZPIkCHjWAYPsuRAtSLdypCHDBky7mEEJfhSkY6X2Lbl4jJkyLiYwYPgys5pW0KGDBky+AWO7MaDePBNGTJkXMCojUSkTQKeAMeJtAwZMlozeOrID5p+kwfcpUamDBkyzmP8ADtFx2WsSWb6AAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -415,6 +321,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/16/阅读笔记-同步锁synchronized/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">阅读笔记-&gt;同步锁synchronized/volatile</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -440,7 +356,7 @@ var _hmt = _hmt || [];
 
   
   <div id="SOHUCS"></div> 
-<!--<div id="SOHUCS" sid="undefined"></div>  -->
+<!--<div id="SOHUCS" sid="分库分表"></div>  -->
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytFnM0Gz"; 
@@ -474,7 +390,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

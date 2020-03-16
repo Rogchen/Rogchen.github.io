@@ -158,6 +158,92 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-分库分表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/16/分库分表/">数据库的分库分表操作</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/16/分库分表/" class="archive-article-date">
+  	<time datetime="2020-03-16T08:13:15.292Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p> 很早就听说了分库分表操作，但是一直没记住，这里只是单纯做个笔记。</p>
+<h2 id="2、读写分离"><a href="#2、读写分离" class="headerlink" title="2、读写分离"></a>2、读写分离</h2><p>将数据库分为主从库，一个主库（Master）用于写数据，多个从库（Slaver）进行轮询读取数据的过程，主从库之间通过某种通讯机制进行数据的同步，是一种常见的数据库架构。读写分离有个问题就是同步问题，有时候我们想要及时返回数据呢？所以我们经常是把一些着急返回的通过代码形式从主库去获取。</p>
+<h3 id="2-1、-为什么要读写分离"><a href="#2-1、-为什么要读写分离" class="headerlink" title="2.1、 为什么要读写分离"></a>2.1、 为什么要读写分离</h3><p>大多数互联网数据操作往往都是读多写少，随着数据的增长，数据库的“读”会首先成为瓶颈。如果我们希望能线性地提升数据库的读性能和写性能，就需要让读写尽可能的不相互影响，各自为政。在使用读写分离之前我们应该考虑使用缓存能不能解决问题。然后再考虑对数据库按照 “读” 和 “写” 进行分组。读写分离意味着将一体的结构的进行分散，在数据量大、高并发的情景中要考虑以下这些问题</p>
+        
+          <a class="article-more-a" href="/2020/03/16/分库分表/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分表</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/16/分库分表/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-阅读笔记-同步锁synchronized" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -301,92 +387,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/16/阅读笔记-hashmap的扩容/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-分库分表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/分库分表/">数据库的分库分表操作</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/11/分库分表/" class="archive-article-date">
-  	<time datetime="2020-03-11T06:52:30.233Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p> 很早就听说了分库分表操作，但是一直没记住，这里只是单纯做个笔记。</p>
-<h2 id="2、读写分离"><a href="#2、读写分离" class="headerlink" title="2、读写分离"></a>2、读写分离</h2><p>将数据库分为主从库，一个主库（Master）用于写数据，多个从库（Slaver）进行轮询读取数据的过程，主从库之间通过某种通讯机制进行数据的同步，是一种常见的数据库架构。读写分离有个问题就是同步问题，有时候我们想要及时返回数据呢？所以我们经常是把一些着急返回的通过代码形式从主库去获取。</p>
-<h3 id="2-1、-为什么要读写分离"><a href="#2-1、-为什么要读写分离" class="headerlink" title="2.1、 为什么要读写分离"></a>2.1、 为什么要读写分离</h3><p>大多数互联网数据操作往往都是读多写少，随着数据的增长，数据库的“读”会首先成为瓶颈。如果我们希望能线性地提升数据库的读性能和写性能，就需要让读写尽可能的不相互影响，各自为政。在使用读写分离之前我们应该考虑使用缓存能不能解决问题。然后再考虑对数据库按照 “读” 和 “写” 进行分组。读写分离意味着将一体的结构的进行分散，在数据量大、高并发的情景中要考虑以下这些问题</p>
-        
-          <a class="article-more-a" href="/2020/03/11/分库分表/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/分库分表/">展开全文 >></a>
         </p>
       
 
@@ -920,19 +920,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">draft</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">wifi</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">draft</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1024,15 +1024,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">aliyun</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">repository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
