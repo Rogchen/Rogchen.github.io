@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>https://rogchen.github.com/2020/03/23/%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0-%3Ezuul%E7%BD%91%E5%85%B3%E7%9A%84%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2020-03-23T03:34:07.714Z</lastmod>
+    <data>
+        <display>
+        <title>zuul网关的简单配置</title>
+        <pubTime>2020-03-23T03:34:07.718Z</pubTime>
+        
+        <tag>zuul</tag>
+         
+        <tag>hystrix</tag>
+         
+        <tag>rabbion</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://rogchen.github.com/2020/03/16/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/</loc>
     <lastmod>2020-03-16T08:13:15.288Z</lastmod>
     <data>
