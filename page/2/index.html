@@ -396,19 +396,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-cmd_wifi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-draft" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/cmd_wifi/">windows通过命令获取连接过的所有wifi和密码</a>
+      <a class="article-title" href="/2019/09/16/draft/">hexo私密功能</a>
     </h1>
   
 
         
-        <a href="/2019/09/16/cmd_wifi/" class="archive-article-date">
+        <a href="/2019/09/16/draft/" class="archive-article-date">
   	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
 </a>
         
@@ -416,10 +416,17 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>在windows 打开dos（win+r）输入下面命令就列出很多行 你以前连接过的wifi信息、加密方式、包括密码<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /f <span class="string">"skip=9 tokens=1,2 delims=:"</span> %i <span class="keyword">in</span> (<span class="string">'netsh wlan show profiles'</span>) <span class="keyword">do</span>  @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=<span class="keyword">clear</span></span><br></pre></td></tr></table></figure></li>
+        <h3 id="1-草稿相当于很多博客都有的“私密文章”功能。"><a href="#1-草稿相当于很多博客都有的“私密文章”功能。" class="headerlink" title="1.草稿相当于很多博客都有的“私密文章”功能。"></a>1.草稿相当于很多博客都有的“私密文章”功能。</h3><ul>
+<li>会在source/_drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到_drafts目录之中。<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">draft</span> <span class="string">"new draft"</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<p>如果你希望强行预览草稿，更改配置文件：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">render_drafts:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>或者，如下方式启动server：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo<span class="built_in"> server </span>--drafts</span><br></pre></td></tr></table></figure></p>
+<p>下面这条命令可以把草稿变成文章，或者页面：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo publish [layout] &lt;filename&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-常用命令"><a href="#2-常用命令" class="headerlink" title="2.常用命令"></a>2.常用命令</h3>
+        
+          <a class="article-more-a" href="/2019/09/16/draft/#more">more >></a>
+        
       
 
       
@@ -432,11 +439,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wifi</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">draft</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cmd</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
@@ -446,7 +453,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/cmd_wifi/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/16/draft/">展开全文 >></a>
         </p>
       
 
@@ -991,6 +998,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
               </li>
              
@@ -1000,14 +1015,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1051,6 +1058,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">zuul</a>
               </li>
              
@@ -1072,18 +1091,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分表</a>
               </li>
              
               <li class="article-tag-list-item">
