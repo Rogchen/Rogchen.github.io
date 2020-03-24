@@ -165,13 +165,13 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/23/复习笔记->zuul网关的配置/">zuul网关的简单配置</a>
+      <a class="article-title" href="/2020/03/24/复习笔记->zuul网关的配置/">zuul网关的简单配置</a>
     </h1>
   
 
         
-        <a href="/2020/03/23/复习笔记->zuul网关的配置/" class="archive-article-date">
-  	<time datetime="2020-03-23T03:34:07.718Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
+        <a href="/2020/03/24/复习笔记->zuul网关的配置/" class="archive-article-date">
+  	<time datetime="2020-03-24T07:31:04.907Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
 </a>
         
       </header>
@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
       
         <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>什么是网关：可以粗略的理解成一个nginx，实现动态路由，监控，弹性和安全性等。这边的网关都是在eureka前提下，如果要使用无eureka的参考以下</p>
         
-          <a class="article-more-a" href="/2020/03/23/复习笔记->zuul网关的配置/#more">more >></a>
+          <a class="article-more-a" href="/2020/03/24/复习笔记->zuul网关的配置/#more">more >></a>
         
       
 
@@ -212,7 +212,93 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/23/复习笔记->zuul网关的配置/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/24/复习笔记->zuul网关的配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-复习笔记-并发测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/复习笔记-并发测试/">复习笔记-&gt;semaphore/countDownLatch</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/复习笔记-并发测试/" class="archive-article-date">
+  	<time datetime="2020-03-24T03:03:51.432Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>开发也经常需要跑并发测试，要是每次需要开jmater/loadrunner那这样太麻烦了，这边简单记录一个单元测试，实际生产使用需要对这快在进行优化。</p>
+<h2 id="锁的差别"><a href="#锁的差别" class="headerlink" title="锁的差别"></a>锁的差别</h2><p>synchronized是互斥锁，每次只能有一个线程，semaphore也是同步锁维护的是一个许可集，调用acquire()获取一个许可，release()释放一个许可。</p>
+<h2 id="信号枪"><a href="#信号枪" class="headerlink" title="信号枪"></a>信号枪</h2><p>countDownLatch 信号枪当countDown退到0时候就执行awit的方法。可以用于并发/主线城等待等方式上的使用。<br>
+        
+          <a class="article-more-a" href="/2020/03/24/复习笔记-并发测试/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">countDownLatch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">semaphore</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线程池</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/复习笔记-并发测试/">展开全文 >></a>
         </p>
       
 
@@ -749,82 +835,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-user-vim" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/14/user-vim/">vim使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/14/user-vim/" class="archive-article-date">
-  	<time datetime="2019-10-14T03:26:50.537Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="入门操作"><a href="#入门操作" class="headerlink" title="入门操作"></a>入门操作</h1><h2 id="1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存"><a href="#1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存" class="headerlink" title="1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存"></a>1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存</h2><h1 id="操作提升"><a href="#操作提升" class="headerlink" title="操作提升"></a>操作提升</h1><h2 id="2、-set-showmode-回车-即可显示提示。"><a href="#2、-set-showmode-回车-即可显示提示。" class="headerlink" title="2、 :set showmode+回车 即可显示提示。"></a>2、 :set showmode+回车 即可显示提示。</h2><h2 id="3、粘贴复制删除等操作"><a href="#3、粘贴复制删除等操作" class="headerlink" title="3、粘贴复制删除等操作"></a>3、粘贴复制删除等操作</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">----命令模式：----</span><br><span class="line">yy	复制光标所在行</span><br><span class="line"><span class="number">2</span>yy	复制光标所在行开始的<span class="number">2</span>行</span><br><span class="line">p	粘贴</span><br><span class="line">dd	删除光标所在行（实际是剪切）</span><br><span class="line"><span class="number">3</span>dd	删除光标所在行开始的<span class="number">3</span>行（剪切）</span><br><span class="line">x	删除当前光标所在的字符</span><br><span class="line">X（大写)	删除当前光标前一个字符</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/10/14/user-vim/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/14/user-vim/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -919,11 +929,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wifi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">draft</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -939,39 +977,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wifi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ll</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,6 +1021,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">configuration</a>
               </li>
              
@@ -1019,7 +1033,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+                <a href="javascript:void(0)" class="js-tag color5">zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">rabbion</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1028,10 +1050,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">repository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1047,15 +1065,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">zuul</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hystrix</a>
+                <a href="javascript:void(0)" class="js-tag color5">countDownLatch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">rabbion</a>
+                <a href="javascript:void(0)" class="js-tag color5">semaphore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">

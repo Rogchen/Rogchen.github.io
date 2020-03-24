@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>Tag: 翻墙 | Rogchen的博客</title>
+  <title>复习笔记-&gt;semaphore/countDownLatch | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rogchen的博客">
-<meta property="og:url" content="https://rogchen.github.com/tags/翻墙/index.html">
+  <meta name="description" content="前言开发也经常需要跑并发测试，要是每次需要开jmater/loadrunner那这样太麻烦了，这边简单记录一个单元测试，实际生产使用需要对这快在进行优化。 锁的差别synchronized是互斥锁，每次只能有一个线程，semaphore也是同步锁维护的是一个许可集，调用acquire()获取一个许可，release()释放一个许可。 信号枪countDownLatch 信号枪当countDown退">
+<meta name="keywords" content="countDownLatch,semaphore,线程池">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复习笔记-&gt;semaphore&#x2F;countDownLatch">
+<meta property="og:url" content="https://rogchen.github.com/2020/03/24/复习笔记-并发测试/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta property="og:description" content="前言开发也经常需要跑并发测试，要是每次需要开jmater/loadrunner那这样太麻烦了，这边简单记录一个单元测试，实际生产使用需要对这快在进行优化。 锁的差别synchronized是互斥锁，每次只能有一个线程，semaphore也是同步锁维护的是一个许可集，调用acquire()获取一个许可，release()释放一个许可。 信号枪countDownLatch 信号枪当countDown退">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-24T03:03:51.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rogchen的博客">
-<meta name="twitter:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta name="twitter:title" content="复习笔记-&gt;semaphore&#x2F;countDownLatch">
+<meta name="twitter:description" content="前言开发也经常需要跑并发测试，要是每次需要开jmater/loadrunner那这样太麻烦了，这边简单记录一个单元测试，实际生产使用需要对这快在进行优化。 锁的差别synchronized是互斥锁，每次只能有一个线程，semaphore也是同步锁维护的是一个许可集，调用acquire()获取一个许可，release()释放一个许可。 信号枪countDownLatch 信号枪当countDown退">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -156,68 +157,206 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-复习笔记-并发测试" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/16/linux-v2ray-client/" class="archive-article-date">
-  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/16/linux-v2ray-client/">在linux使用v2ray进行翻墙</a>
+    <h1 class="article-title" itemprop="name">
+      复习笔记-&gt;semaphore/countDownLatch
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/24/复习笔记-并发测试/" class="archive-article-date">
+  	<time datetime="2020-03-24T03:03:51.432Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>开发也经常需要跑并发测试，要是每次需要开jmater/loadrunner那这样太麻烦了，这边简单记录一个单元测试，实际生产使用需要对这快在进行优化。</p>
+<h2 id="锁的差别"><a href="#锁的差别" class="headerlink" title="锁的差别"></a>锁的差别</h2><p>synchronized是互斥锁，每次只能有一个线程，semaphore也是同步锁维护的是一个许可集，调用acquire()获取一个许可，release()释放一个许可。</p>
+<h2 id="信号枪"><a href="#信号枪" class="headerlink" title="信号枪"></a>信号枪</h2><p>countDownLatch 信号枪当countDown退到0时候就执行awit的方法。可以用于并发/主线城等待等方式上的使用。<br><a id="more"></a></p>
+<p>单元测试</p>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 测试信号量() throws InterruptedException &#123;</span><br><span class="line">        <span class="keyword">int</span> threadTotal = <span class="number">20</span>, clientTotal = <span class="number">100</span>;</span><br><span class="line"><span class="comment">//       线程池        </span></span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line"><span class="comment">//        定义信号量</span></span><br><span class="line">        <span class="keyword">final</span> Semaphore semaphore = <span class="keyword">new</span> Semaphore(threadTotal);</span><br><span class="line"><span class="comment">//        定义信号枪--&gt;countDown为0时才执行awit方法，保证主线程的等待</span></span><br><span class="line">        <span class="keyword">final</span> CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(clientTotal);</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"当前时间："</span>+ <span class="keyword">new</span> Date().toLocaleString());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; clientTotal; i++) &#123;</span><br><span class="line">            executorService.execute(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//                    一次只允许进入一个，多余的会等待</span></span><br><span class="line">                    semaphore.acquire();</span><br><span class="line">                    <span class="comment">// 判断是否正常</span></span><br><span class="line"><span class="comment">//                    System.out.println("当前线程：" + Thread.currentThread().getName());</span></span><br><span class="line"><span class="comment">//                    睡眠2秒</span></span><br><span class="line">                    TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">                    semaphore.release();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                countDownLatch.countDown();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        countDownLatch.await();</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"结束时间："</span>+ <span class="keyword">new</span> Date().toLocaleString());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">countDownLatch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">v2ray</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">semaphore</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">翻墙</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线程池</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3awW7bQAwEUP//T7dATwXS2DPkrp0CTycjsaV9MiCuh3w84uPXn+Pv11+P/J3Pj6/X/e6/xw48PDy80dLzRc8+mzOe36b8unh4eHi3eXkxmBWS9nGf8J5/Cg8PD+8n8JLTJQXg+Tmflx88PDy8/4s3Kw9t0NBuuPHw8PA+xZsFCrNt92y517MWPDw8vJi3CRc+9fp6fw8PDw9v1FVvw9b8/LOgtl4tHh4e3gXe8xPlmHzRLWbfEsPDw8O7x2s3srO2Wb51zsOOF1Q8PDy8o7y2KTVrYm2245tNPB4eHt4NXt7gn4UCsybWvpDg4eHh3eO1ce0sMpiNZOXFoG6A4eHh4R0aGthvo2dLWQ1L5dfFw8PDO8prB5tmEUZScmZDsdH3hoeHh3eIt2nPJyVkP0Aw+2GAh4eH935e+xBvS07+uG9vWTE6gIeHh7fm5UNUSfNp1lTbxLv/eCceHh7eBV4epLZhazsK0MbEdSSBh4eHd5TXRqv7QYFZtJF8tu714eHh4ZW83J0va7P93Q9gFSk1Hh4e3ojXxgHtoNXsRuSrKiIMPDw8vEO8/B4koUA7IHW2DfbtN4aHh4d3lLcPXtul54UnH9WKNtZ4eHh4b+TlUW9bQpLbOouS8fDw8O7x8sW1La5TD/3ZZv2RvwkPDw9vxJth8i31JgiezUFEowN4eHh4I97mgZ6HAu3Sk+i2+Erw8PDwjvLax3cb+CaBxWwNRd3Dw8PDu8zLBwIe8dGeLS9RL9aDh4eHd4HXLnFWNk6FFPnrGoyHh4dX8jbFILlkuyHeFIwixsXDw8Nb82YBa9v+3w9j1U0yPDw8vI/yNsVgFiXkZeNFfw8PDw/vo7z2L3ljLA8+inPi4eHhXeO1o1d5pNtGvZtNPB4eHt57eJsGWDtwcKpIHBgXwMPDw5vwfgOd7FS5y7UMtgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/03/24/复习笔记->zuul网关的配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          zuul网关的简单配置
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/03/16/分库分表/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据库的分库分表操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS"></div> 
+<!--<div id="SOHUCS" sid="复习笔记-并发测试"></div>  -->
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytFnM0Gz"; 
+var conf = "364b2ce85a0a34638cf8a1e4411a7d40"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +380,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
