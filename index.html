@@ -158,6 +158,208 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-复习笔记-&gt;redis学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/10/复习笔记->redis学习/">redis介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/10/复习笔记->redis学习/" class="archive-article-date">
+  	<time datetime="2020-04-10T03:23:48.685Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>reidis是一个开源使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、key-value数据库，并提供多种语言api的非关系型数据库。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>1.缓存</p>
+<p>2.共享session</p>
+<p>3.消息队列</p>
+<p>4.分布式锁</p>
+<h2 id="redis为什么怎么快"><a href="#redis为什么怎么快" class="headerlink" title="redis为什么怎么快"></a>redis为什么怎么快</h2><p>1.纯内存操作</p>
+<p>2.单线程操作，避免频繁的上下文切换</p>
+<p>3.合理高效的数据结构</p>
+<p>4.采用了非阻塞I/O多路复用机制</p>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><p>持久化就是把内存的数据写到磁盘中去，防止服务器宕机了内存数据丢失。<br>redis默认提供了两种持久化方式：RDB（默认）和AOF。</p>
+<h3 id="持久化机制"><a href="#持久化机制" class="headerlink" title="持久化机制"></a>持久化机制</h3><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种： 1.RDB：快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略。 当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉。 1.AOF：把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合。 使用AOF做持久化，每一个写命令都通过write函数追加到appendonly.aof中。aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据。 缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB。 Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB）；全同步结束后，进行增量同步(AOF)。</p>
+<p>| RDB</p>
+<p>rdb是redis database的缩写，功能核心函数rdbSave（生产RDB文件）和rdbLoad（从文件加载内存）两个函数。</p>
+<p>| AOF</p>
+<p>aof是append-only-flie缩写，每当执行服务器（定时）任务或者函数flushAppendOnlyFile函数都会被调用，这个函数执行以下两个工作aof写入保存：</p>
+<p>write：根据条件，将aof_buf中缓存写入到aof文件。</p>
+<p>save：根据条件，调用fsync或fdatasync函数，将AOF文件保存到磁盘中去。</p>
+<p>| 存储结构<br>内容是redis通讯协议（RESP）个是的命令文本存储</p>
+<p>| 比较：</p>
+<p>1.aof文件比rdb更新频繁高，优先使用aof还原数据。</p>
+<p>2.aof比rdb更安全也更大</p>
+<p>3.rdb新跟那个比aof好。</p>
+<p>4.如果两个都配优先加载AOF。</p>
+<p>| redis通讯协议（RESP）</p>
+<p>resp是redis客户端和服务端之前使用的一种通讯协议;</p>
+<p>resp的特点：实现简单、快速解析、可读性好;</p>
+<h2 id="redis的数据结构及使用-场景"><a href="#redis的数据结构及使用-场景" class="headerlink" title="redis的数据结构及使用 场景"></a>redis的数据结构及使用 场景</h2><p>1.string字符串：字符串类型是redis最基本的数据机构，首先都是字符串类型，而且其他集中数据结构都是在字符串类型基础上构建的，我们常使用set key value 命令就是字符串。常用缓存、计数、共享session、限速。一个键最大能存储512MB。<br>结构：set key value</p>
+<p>2.Hash哈希：在redis中哈希类型是指键值本身又是一个键值对结构，是sting类型的field和value映射表，特别适用与存储对象。比如用户信息存储，购物车的实现。<br>结构：hmset name key1 value1 key2 value2</p>
+<p>3.List里表（双向链表）：列表类型是用来存储多个有序的字符串。可以用来做简单消息队列。链表结构在key的 头/尾 添加字符串元素，组成一条链。</p>
+<p>4.Set集合：集合set类型也是用来保存多个字符串元素，但和列表类型不一样的是，集合 中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下表获取元素。利用set的交集、并集、差集等操作，可以计算共同喜好、全部喜好、自己独有喜好等功能。集合都是通过hash表实现的，所以添加、删除、查找的复杂度都市O(1)。<br>格式：sadd name value</p>
+<p>5.Sorted set有序集合（跳表实现）：sorted set多了一个权重参数Score，集合中的元素能按照Score进行排列。可以做排行榜应用，取Top N操作。<br>格式：zadd name score value</p>
+<h2 id="缓存穿透、雪崩"><a href="#缓存穿透、雪崩" class="headerlink" title="缓存穿透、雪崩"></a>缓存穿透、雪崩</h2><h3 id="1-缓存穿透"><a href="#1-缓存穿透" class="headerlink" title="1.缓存穿透"></a>1.缓存穿透</h3><p>一般缓存系统是先按照key去缓存查询，如果不存在对应的value就去后端系统查找，一些恶意/不正常请求会去请求一个不存在的key，而且量很大，就会对后端系统造成很大压力，这就叫做缓存穿透。</p>
+<p>缓存穿透如何避免</p>
+<p>1.在接口做校验</p>
+<p>2.对查询结果为空也进行缓存，缓存时间设置短一点，或者该key对应数据insert了之后清理缓存。</p>
+<p>3.对一定不存在的key进行过滤。可以把所有的可能key放到一个大的bitmap中，查询是通过该bitmap过滤。</p>
+<h3 id="2-缓存雪崩"><a href="#2-缓存雪崩" class="headerlink" title="2.缓存雪崩"></a>2.缓存雪崩</h3><p>当缓存服务器重启或者大量缓存集中在某一时间段失效，这样失效的时候会给后端带来很大压力，导致系统崩溃。</p>
+<p>解决缓存雪崩</p>
+<p>1.使用redis高可用框架：使用redis集群来保证redis服务不会挂掉。</p>
+<p>2.缓存时间设置不一致，给缓存的失效时间加上一个随机值，避免集体失效。</p>
+<p>3.限流降级策略：也有一定的备案，i比如个性推荐服务不可用了，换成热点数据推荐服务。</p>
+<h2 id="redis并发竞争key的解决方案"><a href="#redis并发竞争key的解决方案" class="headerlink" title="redis并发竞争key的解决方案"></a>redis并发竞争key的解决方案</h2><p>1.分布式锁+时间戳</p>
+<p>2.利用消息队列</p>
+<h2 id="redis和数据库双写一致性方案"><a href="#redis和数据库双写一致性方案" class="headerlink" title="redis和数据库双写一致性方案"></a>redis和数据库双写一致性方案</h2><p>先更新数据库，再删除换成。数据库的读操作速度远远快于写操作，所以脏数据很难出现。可以对异步延时删除策略，保证读请求完成以后再进行删除操作。</p>
+<h2 id="Redis的管道pipeline"><a href="#Redis的管道pipeline" class="headerlink" title="Redis的管道pipeline"></a>Redis的管道pipeline</h2><p>对于单线程阻塞式的Redis，Pipeline可以满足批量的操作，把多个命令连续的发送给Redis Server，然后一一解析响应结果。Pipelining可以提高批量处理性能，提升的原因主要是TCP连接中减少了“交互往返”的时间。pipeline 底层是通过把所有的操作封装成流，redis有定义自己的出入输出流。在 sync() 方法执行操作，每次请求放在队列里面，解析响应包。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">缓存雪崩</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">缓存穿透</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/10/复习笔记->redis学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-user-vim" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/user-vim/">vim使用</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/user-vim/" class="archive-article-date">
+  	<time datetime="2020-03-24T09:11:38.071Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="入门操作"><a href="#入门操作" class="headerlink" title="入门操作"></a>入门操作</h1><h2 id="1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存"><a href="#1、输入i进入编辑模式，按下esc-ctrl-c-输入-wq-保存，q！不保存强制退出，wq！强制保存" class="headerlink" title="1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存"></a>1、输入i进入编辑模式，按下esc/ctrl+c 输入:wq 保存，q！不保存强制退出，wq！强制保存</h2><h1 id="操作提升"><a href="#操作提升" class="headerlink" title="操作提升"></a>操作提升</h1><h2 id="2、-set-showmode-回车-即可显示提示。"><a href="#2、-set-showmode-回车-即可显示提示。" class="headerlink" title="2、 :set showmode+回车 即可显示提示。"></a>2、 :set showmode+回车 即可显示提示。</h2><h2 id="3、粘贴复制删除等操作"><a href="#3、粘贴复制删除等操作" class="headerlink" title="3、粘贴复制删除等操作"></a>3、粘贴复制删除等操作</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">----命令模式：----</span><br><span class="line">yy	复制光标所在行</span><br><span class="line"><span class="number">2</span>yy	复制光标所在行开始的<span class="number">2</span>行</span><br><span class="line">p	粘贴</span><br><span class="line">dd	删除光标所在行（实际是剪切）</span><br><span class="line"><span class="number">3</span>dd	删除光标所在行开始的<span class="number">3</span>行（剪切）</span><br><span class="line">x	删除当前光标所在的字符</span><br><span class="line">X（大写)	删除当前光标前一个字符</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/03/24/user-vim/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/user-vim/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-复习笔记-&gt;zuul网关的配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -661,180 +863,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-nginx-user" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/23/nginx-user/">nginx安装和使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/23/nginx-user/" class="archive-article-date">
-  	<time datetime="2019-10-23T08:49:07.118Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="nginx的编译安装"><a href="#nginx的编译安装" class="headerlink" title="nginx的编译安装"></a>nginx的编译安装</h1><p><a href="!http://nginx.org/en/download.html">下载nginx</a> 选择版本，我这里使用v1.15.4</p>
-<p>解压</p>
-<p><code>tar xvf nginx-1.15.4.tar.gv</code></p>
-<p>最好重命名该源码<br><code>mv nginx-1.15.4 nginx-1.15.4-source</code></p>
-<p>进入目录cd nginx-1.15.4-source</p>
-<p>使用下面编译安装命令</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/configure  --prefix=/</span>home<span class="regexp">/nginx/</span>nginx-<span class="number">1.15</span>.<span class="number">4</span>  --sbin-path=<span class="regexp">/home/</span>nginx<span class="regexp">/nginx-1.15.4/</span>sbin<span class="regexp">/nginx --conf-path=/</span>home<span class="regexp">/nginx/</span>nginx-<span class="number">1.15</span>.<span class="number">4</span><span class="regexp">/conf/</span>nginx.conf --error-log-path=<span class="regexp">/home/</span>nginx<span class="regexp">/nginx-1.15.4/</span>logs<span class="regexp">/error.log  --http-log-path=/</span>home<span class="regexp">/nginx/</span>nginx-<span class="number">1.15</span>.<span class="number">4</span><span class="regexp">/logs/</span>access.log  --pid-path=<span class="regexp">/home/</span>nginx<span class="regexp">/nginx-1.15.4/</span>pid<span class="regexp">/nginx_6379.pid --lock-path=/</span>home<span class="regexp">/nginx/</span>nginx-<span class="number">1.15</span>.<span class="number">4</span><span class="regexp">/lock/</span>nginx.lock  --user=nginx --<span class="keyword">group</span>=nginx --with-http_ssl_module --with-http_stub_status_module --with-http_gzip_static_module --http-client-body-temp-path=<span class="regexp">/home/</span>nginx<span class="regexp">/nginx-1.15.4/</span>tmp<span class="regexp">/client/</span> --http-proxy-temp-path=<span class="regexp">/home/</span>nginx<span class="regexp">/nginx-1.15.4/</span>tmp<span class="regexp">/proxy/</span> --http-fastcgi-temp-path=<span class="regexp">/home/</span>nginx<span class="regexp">/nginx-1.15.4/</span>tmp<span class="regexp">/fcgi/</span> --http-uwsgi-temp-path=<span class="regexp">/home/</span>nginx<span class="regexp">/nginx-1.15.4/</span>tmp<span class="regexp">/uwsgi --http-scgi-temp-path=/</span>home<span class="regexp">/nginx/</span>nginx-<span class="number">1.15</span>.<span class="number">4</span><span class="regexp">/tmp/</span>scgi --with-pcre</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/10/23/nginx-user/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">限流</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安装</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/23/nginx-user/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-user-aliyun-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/15/user-aliyun-docker/">使用私有服镜像仓库</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/15/user-aliyun-docker/" class="archive-article-date">
-  	<time datetime="2019-10-15T09:31:36.626Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、登录仓库</p>
-<p><code>sudo docker login --username=chenhk128@163.com registry.cn-hangzhou.aliyuncs.com</code></p>
-<p>2、从Registry中拉取镜像</p>
-<p><code>sudo docker pull registry.cn-hangzhou.aliyuncs.com/rogchen/rogchen_public:[镜像版本号]</code></p>
-<p>3、将镜像推送到Registry</p>
-        
-          <a class="article-more-a" href="/2019/10/15/user-aliyun-docker/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">aliyun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">repository</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/15/user-aliyun-docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -957,23 +985,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ll</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -985,23 +1005,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ll</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">限流</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1021,6 +1037,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">限流</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">configuration</a>
               </li>
              
@@ -1029,7 +1057,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1041,7 +1069,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分表</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1057,15 +1093,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分库</a>
+                <a href="javascript:void(0)" class="js-tag color5">lock</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分表</a>
+                <a href="javascript:void(0)" class="js-tag color4">volatile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1093,15 +1129,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lock</a>
+                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩，缓存穿透</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">volatile</a>
+                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">缓存穿透</a>
               </li>
             
             <div class="clearfix"></div>

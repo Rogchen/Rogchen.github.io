@@ -4,6 +4,44 @@
 
     
   <url>
+    <loc>https://rogchen.github.com/2020/04/10/%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0-%3Eredis%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2020-04-10T03:23:48.681Z</lastmod>
+    <data>
+        <display>
+        <title>redis介绍</title>
+        <pubTime>2020-04-10T03:23:48.685Z</pubTime>
+        
+        <tag>redis</tag>
+         
+        <tag>缓存雪崩</tag>
+         
+        <tag>缓存穿透</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://rogchen.github.com/2020/03/24/user-vim/</loc>
+    <lastmod>2020-03-24T09:11:38.063Z</lastmod>
+    <data>
+        <display>
+        <title>vim使用</title>
+        <pubTime>2020-03-24T09:11:38.071Z</pubTime>
+        
+        <tag>vim</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://rogchen.github.com/2020/03/24/%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0-%3Ezuul%E7%BD%91%E5%85%B3%E7%9A%84%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2020-03-24T07:31:04.903Z</lastmod>
     <data>
@@ -166,23 +204,6 @@
 
     
   <url>
-    <loc>https://rogchen.github.com/2019/10/14/user-vim/</loc>
-    <lastmod>2019-10-14T03:26:50.533Z</lastmod>
-    <data>
-        <display>
-        <title>vim使用</title>
-        <pubTime>2019-10-14T03:26:50.537Z</pubTime>
-        
-        <tag>vim</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://rogchen.github.com/2019/10/14/eureka-config/</loc>
     <lastmod>2019-07-31T09:50:44.616Z</lastmod>
     <data>
@@ -252,25 +273,6 @@
         <tag>configuration</tag>
          
         <tag>autoconfiguration</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://rogchen.github.com/2019/09/16/springboot-websocket/</loc>
-    <lastmod>2018-10-10T09:24:12.124Z</lastmod>
-    <data>
-        <display>
-        <title>使用springboot搭建websocket实现即使通讯</title>
-        <pubTime>2019-09-16T01:06:37.790Z</pubTime>
-        
-        <tag>springboot</tag>
-         
-        <tag>websocket</tag>
          
          
            
