@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
 
         
         <a href="/2020/04/10/复习笔记->redis学习/" class="archive-article-date">
-  	<time datetime="2020-04-10T03:23:48.685Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+  	<time datetime="2020-04-10T06:02:45.551Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
 </a>
         
       </header>
@@ -183,47 +183,9 @@ var _hmt = _hmt || [];
 <p>2.共享session</p>
 <p>3.消息队列</p>
 <p>4.分布式锁</p>
-<h2 id="redis为什么怎么快"><a href="#redis为什么怎么快" class="headerlink" title="redis为什么怎么快"></a>redis为什么怎么快</h2><p>1.纯内存操作</p>
-<p>2.单线程操作，避免频繁的上下文切换</p>
-<p>3.合理高效的数据结构</p>
-<p>4.采用了非阻塞I/O多路复用机制</p>
-<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><p>持久化就是把内存的数据写到磁盘中去，防止服务器宕机了内存数据丢失。<br>redis默认提供了两种持久化方式：RDB（默认）和AOF。</p>
-<h3 id="持久化机制"><a href="#持久化机制" class="headerlink" title="持久化机制"></a>持久化机制</h3><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种： 1.RDB：快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略。 当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉。 1.AOF：把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合。 使用AOF做持久化，每一个写命令都通过write函数追加到appendonly.aof中。aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据。 缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB。 Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB）；全同步结束后，进行增量同步(AOF)。</p>
-<p>| RDB</p>
-<p>rdb是redis database的缩写，功能核心函数rdbSave（生产RDB文件）和rdbLoad（从文件加载内存）两个函数。</p>
-<p>| AOF</p>
-<p>aof是append-only-flie缩写，每当执行服务器（定时）任务或者函数flushAppendOnlyFile函数都会被调用，这个函数执行以下两个工作aof写入保存：</p>
-<p>write：根据条件，将aof_buf中缓存写入到aof文件。</p>
-<p>save：根据条件，调用fsync或fdatasync函数，将AOF文件保存到磁盘中去。</p>
-<p>| 存储结构<br>内容是redis通讯协议（RESP）个是的命令文本存储</p>
-<p>| 比较：</p>
-<p>1.aof文件比rdb更新频繁高，优先使用aof还原数据。</p>
-<p>2.aof比rdb更安全也更大</p>
-<p>3.rdb新跟那个比aof好。</p>
-<p>4.如果两个都配优先加载AOF。</p>
-<p>| redis通讯协议（RESP）</p>
-<p>resp是redis客户端和服务端之前使用的一种通讯协议;</p>
-<p>resp的特点：实现简单、快速解析、可读性好;</p>
-<h2 id="redis的数据结构及使用-场景"><a href="#redis的数据结构及使用-场景" class="headerlink" title="redis的数据结构及使用 场景"></a>redis的数据结构及使用 场景</h2><p>1.string字符串：字符串类型是redis最基本的数据机构，首先都是字符串类型，而且其他集中数据结构都是在字符串类型基础上构建的，我们常使用set key value 命令就是字符串。常用缓存、计数、共享session、限速。一个键最大能存储512MB。<br>结构：set key value</p>
-<p>2.Hash哈希：在redis中哈希类型是指键值本身又是一个键值对结构，是sting类型的field和value映射表，特别适用与存储对象。比如用户信息存储，购物车的实现。<br>结构：hmset name key1 value1 key2 value2</p>
-<p>3.List里表（双向链表）：列表类型是用来存储多个有序的字符串。可以用来做简单消息队列。链表结构在key的 头/尾 添加字符串元素，组成一条链。</p>
-<p>4.Set集合：集合set类型也是用来保存多个字符串元素，但和列表类型不一样的是，集合 中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下表获取元素。利用set的交集、并集、差集等操作，可以计算共同喜好、全部喜好、自己独有喜好等功能。集合都是通过hash表实现的，所以添加、删除、查找的复杂度都市O(1)。<br>格式：sadd name value</p>
-<p>5.Sorted set有序集合（跳表实现）：sorted set多了一个权重参数Score，集合中的元素能按照Score进行排列。可以做排行榜应用，取Top N操作。<br>格式：zadd name score value</p>
-<h2 id="缓存穿透、雪崩"><a href="#缓存穿透、雪崩" class="headerlink" title="缓存穿透、雪崩"></a>缓存穿透、雪崩</h2><h3 id="1-缓存穿透"><a href="#1-缓存穿透" class="headerlink" title="1.缓存穿透"></a>1.缓存穿透</h3><p>一般缓存系统是先按照key去缓存查询，如果不存在对应的value就去后端系统查找，一些恶意/不正常请求会去请求一个不存在的key，而且量很大，就会对后端系统造成很大压力，这就叫做缓存穿透。</p>
-<p>缓存穿透如何避免</p>
-<p>1.在接口做校验</p>
-<p>2.对查询结果为空也进行缓存，缓存时间设置短一点，或者该key对应数据insert了之后清理缓存。</p>
-<p>3.对一定不存在的key进行过滤。可以把所有的可能key放到一个大的bitmap中，查询是通过该bitmap过滤。</p>
-<h3 id="2-缓存雪崩"><a href="#2-缓存雪崩" class="headerlink" title="2.缓存雪崩"></a>2.缓存雪崩</h3><p>当缓存服务器重启或者大量缓存集中在某一时间段失效，这样失效的时候会给后端带来很大压力，导致系统崩溃。</p>
-<p>解决缓存雪崩</p>
-<p>1.使用redis高可用框架：使用redis集群来保证redis服务不会挂掉。</p>
-<p>2.缓存时间设置不一致，给缓存的失效时间加上一个随机值，避免集体失效。</p>
-<p>3.限流降级策略：也有一定的备案，i比如个性推荐服务不可用了，换成热点数据推荐服务。</p>
-<h2 id="redis并发竞争key的解决方案"><a href="#redis并发竞争key的解决方案" class="headerlink" title="redis并发竞争key的解决方案"></a>redis并发竞争key的解决方案</h2><p>1.分布式锁+时间戳</p>
-<p>2.利用消息队列</p>
-<h2 id="redis和数据库双写一致性方案"><a href="#redis和数据库双写一致性方案" class="headerlink" title="redis和数据库双写一致性方案"></a>redis和数据库双写一致性方案</h2><p>先更新数据库，再删除换成。数据库的读操作速度远远快于写操作，所以脏数据很难出现。可以对异步延时删除策略，保证读请求完成以后再进行删除操作。</p>
-<h2 id="Redis的管道pipeline"><a href="#Redis的管道pipeline" class="headerlink" title="Redis的管道pipeline"></a>Redis的管道pipeline</h2><p>对于单线程阻塞式的Redis，Pipeline可以满足批量的操作，把多个命令连续的发送给Redis Server，然后一一解析响应结果。Pipelining可以提高批量处理性能，提升的原因主要是TCP连接中减少了“交互往返”的时间。pipeline 底层是通过把所有的操作封装成流，redis有定义自己的出入输出流。在 sync() 方法执行操作，每次请求放在队列里面，解析响应包。</p>
-
+        
+          <a class="article-more-a" href="/2020/04/10/复习笔记->redis学习/#more">more >></a>
+        
       
 
       
@@ -1033,10 +995,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">md</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
@@ -1046,6 +1004,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">md</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1093,15 +1055,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lock</a>
+                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">volatile</a>
+                <a href="javascript:void(0)" class="js-tag color5">缓存穿透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,19 +1091,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩，缓存穿透</a>
+                <a href="javascript:void(0)" class="js-tag color5">lock</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">缓存穿透</a>
+                <a href="javascript:void(0)" class="js-tag color4">volatile</a>
               </li>
             
             <div class="clearfix"></div>

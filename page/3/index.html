@@ -254,19 +254,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-linux-ll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-hexo-more" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/linux-ll/">在linux上安装使用ll命令</a>
+      <a class="article-title" href="/2019/09/16/hexo-more/">让hexo的首页只显示文章的部分内容而不是全部</a>
     </h1>
   
 
         
-        <a href="/2019/09/16/linux-ll/" class="archive-article-date">
+        <a href="/2019/09/16/hexo-more/" class="archive-article-date">
   	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
 </a>
         
@@ -274,13 +274,14 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ll并不是linux下一个基本的命令，它实际上是ls -l的一个别名。<br>Ubuntu默认不支持命令ll，必须用 ls -l，这样使用起来不是很方便。<br>如果要使用此命令，可以作如下修改：</p>
-<ul>
-<li>打开 ~/.bashrc<br>找到 #alias ll=’ls -l’，去掉前面的#就可以了。（关闭原来的终端才能使命令生效）<br>这样个人用户可以使用ll命令，当切换成超级用户后，使用ll命令时提示找不到命令，那是因为你只是修改了个人用户的配置，所以，切换成root后做相同的操作即可解决问题。<br>启示：我们可以通过修改~/.bashrc添加任何其他的命令别名。</li>
-</ul>
-<h2 id="还有另外一种实现方法："><a href="#还有另外一种实现方法：" class="headerlink" title="还有另外一种实现方法："></a>还有另外一种实现方法：</h2>
+        <pre><code>Hexo 的 Next 主题默认是首页显示你每篇文章的全文内容，那么要如何设置只显示部分呢？
+</code></pre><p>我们通过下面的三种方式实现:</p>
+<h2 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h2><hr>
+<p>用文本编辑器打开 themes/ 目录下的对应的主题的theme文件夹下的 _config.yml 文件，找到这段代码，如果没有则新建，可能不同的主题会不支持这种方法：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">1 </span># Automatically Excerpt. <span class="keyword">Not</span> recommend.</span><br><span class="line"><span class="symbol">2 </span># Please use &lt;!-- more --&gt; in the post <span class="keyword">to</span> control excerpt accurately.</span><br><span class="line"><span class="symbol">3 </span>auto_excerpt:</span><br><span class="line"><span class="symbol">4 </span>  enable: false</span><br><span class="line"><span class="symbol">5 </span>  length: <span class="number">150</span></span><br></pre></td></tr></table></figure>
+<p>把 enable 的 false 改成 true 就行了，然后 length 是设定文章预览的文本长度。<br>
         
-          <a class="article-more-a" href="/2019/09/16/linux-ll/#more">more >></a>
+          <a class="article-more-a" href="/2019/09/16/hexo-more/#more">more >></a>
         
       
 
@@ -294,15 +295,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ls -l</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ll</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
@@ -312,7 +305,171 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/linux-ll/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/16/hexo-more/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-git-learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/git-learning/">git命令学习</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/16/git-learning/" class="archive-article-date">
+  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>随着git越来越火，学习好git的常规操作是很有必要。我们从本地-&gt;远程，使用https到使用ssh来介绍使用git</p>
+<h1 id="前言：git的初始化配置"><a href="#前言：git的初始化配置" class="headerlink" title="前言：git的初始化配置"></a>前言：git的初始化配置</h1><h3 id="1、创建文件夹"><a href="#1、创建文件夹" class="headerlink" title="1、创建文件夹"></a>1、创建文件夹</h3><p><code>mkdir 文件名</code></p>
+<h3 id="2、初始化"><a href="#2、初始化" class="headerlink" title="2、初始化"></a>2、初始化</h3><p>初始化本地仓库（.git目录）<br>存放的是本地库配置信息，不要胡乱删除修改。<br><code>git init</code></p>
+        
+          <a class="article-more-a" href="/2019/09/16/git-learning/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/git-learning/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/16/hello-world/" class="archive-article-date">
+  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/hello-world/">展开全文 >></a>
         </p>
       
 
@@ -478,192 +635,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/16/cmd_wifi/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-logger-Info" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/logger-Info/">通过注解和拦截器或aop实现日志</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/16/logger-Info/" class="archive-article-date">
-  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、使用注解和拦截器"><a href="#一、使用注解和拦截器" class="headerlink" title="一、使用注解和拦截器"></a>一、使用注解和拦截器</h1><hr>
-<h3 id="为什么使用拦截器而不是用过滤器呢？"><a href="#为什么使用拦截器而不是用过滤器呢？" class="headerlink" title="为什么使用拦截器而不是用过滤器呢？"></a>为什么使用拦截器而不是用过滤器呢？</h3><ul>
-<li>拦截器是基于Java的反射机制的，而过滤器是基于函数回调。</li>
-<li>拦截器不依赖与servlet容器，过滤器依赖与servlet容器。</li>
-<li>拦截器可以获取IOC容器中的各个bean，而过滤器就不行，这点很重要，在拦截器里注入一个service，可以调用业务逻辑。</li>
-<li>拦截器可以访问action上下文、值栈里的对象。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/09/16/logger-Info/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">注解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">拦截器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/logger-Info/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-rogchen-md" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/rogchen-md/">Rogchen-md学习</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/16/rogchen-md/" class="archive-article-date">
-  	<time datetime="2019-09-16T01:06:37.790Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用#来定义标题</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="#一级标题"></a>#一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="##二级标题"></a>##二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="###三级标题"></a>###三级标题</h3><h6 id="共有六级标题"><a href="#共有六级标题" class="headerlink" title="######共有六级标题"></a>######共有六级标题</h6><hr>
-<h3 id="1、分割线-就是转义"><a href="#1、分割线-就是转义" class="headerlink" title="1、分割线--\就是转义"></a>1、分割线--\就是转义</h3><p>使用横线（-–上换行或者***或者___）</p>
-<hr>
-<h3 id="2、代码块-gt-单行"><a href="#2、代码块-gt-单行" class="headerlink" title="2、代码块-&gt;单行``"></a>2、代码块-&gt;单行``</h3><p><code>代码块输出使用&quot;`</code>“`</p>
-<h3 id="3、代码块-gt-多行"><a href="#3、代码块-gt-多行" class="headerlink" title="3、代码块-&gt;多行```"></a>3、代码块-&gt;多行```</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;abc&lt;/p&gt;</span><br><span class="line">&lt;p&gt;bbb&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="4、使用大于号”-gt-”表示引用"><a href="#4、使用大于号”-gt-”表示引用" class="headerlink" title="4、使用大于号”&gt;”表示引用"></a>4、使用大于号”&gt;”表示引用</h3><blockquote>
-<ul>
-<li>>一级引用，不以结婚为目的的恋爱都是耍流氓<blockquote>
-<ul>
-<li>>&gt;二级引用<blockquote>
-<ul>
-<li>>&gt;&gt;三级引用</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-        
-          <a class="article-more-a" href="/2019/09/16/rogchen-md/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">md</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/rogchen-md/">展开全文 >></a>
         </p>
       
 
@@ -863,10 +834,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">md</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
@@ -876,6 +843,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">md</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,15 +894,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lock</a>
+                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">volatile</a>
+                <a href="javascript:void(0)" class="js-tag color5">缓存穿透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -959,19 +930,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩，缓存穿透</a>
+                <a href="javascript:void(0)" class="js-tag color5">lock</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">缓存雪崩</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">缓存穿透</a>
+                <a href="javascript:void(0)" class="js-tag color4">volatile</a>
               </li>
             
             <div class="clearfix"></div>
