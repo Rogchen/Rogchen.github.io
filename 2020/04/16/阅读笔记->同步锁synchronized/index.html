@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>Tag: 容量 | Rogchen的博客</title>
+  <title>阅读笔记-&gt;同步锁synchronized/volatile | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rogchen的博客">
-<meta property="og:url" content="https://rogchen.github.com/tags/容量/index.html">
+  <meta name="description" content="synchronized 关键字原理众所周知 synchronized 关键字是解决并发问题常用解决方案，有以下三种使用方式:  同步普通方法，锁的是当前对象。在范围操作符之后，返回类型声明之前使用。每次只能有一个线程进入该方法，此时线程获得的是成员锁。">
+<meta name="keywords" content="syschronized,lock,volatile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读笔记-&gt;同步锁synchronized&#x2F;volatile">
+<meta property="og:url" content="https://rogchen.github.com/2020/04/16/阅读笔记->同步锁synchronized/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta property="og:description" content="synchronized 关键字原理众所周知 synchronized 关键字是解决并发问题常用解决方案，有以下三种使用方式:  同步普通方法，锁的是当前对象。在范围操作符之后，返回类型声明之前使用。每次只能有一个线程进入该方法，此时线程获得的是成员锁。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-16T07:46:19.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rogchen的博客">
-<meta name="twitter:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta name="twitter:title" content="阅读笔记-&gt;同步锁synchronized&#x2F;volatile">
+<meta name="twitter:description" content="synchronized 关键字原理众所周知 synchronized 关键字是解决并发问题常用解决方案，有以下三种使用方式:  同步普通方法，锁的是当前对象。在范围操作符之后，返回类型声明之前使用。每次只能有一个线程进入该方法，此时线程获得的是成员锁。">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -156,68 +157,216 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-阅读笔记-&gt;同步锁synchronized" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/阅读笔记-hashmap的扩容/" class="archive-article-date">
-  	<time datetime="2020-03-16T07:46:12.278Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/阅读笔记-hashmap的扩容/">阅读笔记-&gt;hashmap 的key跟扩容</a>
+    <h1 class="article-title" itemprop="name">
+      阅读笔记-&gt;同步锁synchronized/volatile
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/04/16/阅读笔记->同步锁synchronized/" class="archive-article-date">
+  	<time datetime="2020-04-16T14:42:22.480Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="synchronized-关键字原理"><a href="#synchronized-关键字原理" class="headerlink" title="synchronized 关键字原理"></a>synchronized 关键字原理</h2><p>众所周知 synchronized 关键字是解决并发问题常用解决方案，有以下三种使用方式:</p>
+<ul>
+<li>同步普通方法，锁的是当前对象。在范围操作符之后，返回类型声明之前使用。每次只能有一个线程进入该方法，此时线程获得的是成员锁。</li>
+</ul>
+<a id="more"></a>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="function"><span class="keyword">void</span> <span class="title">syncMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//doSomething</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>同步静态方法，如果当前线程进入，那么其他线程在该类中所有操作不能进行，包括静态变量和静态方法，此时当前线程获得的是对象锁。</p>
+<figure class="highlight plain"><figcaption><span>class syncClass &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    public void method() &#123;</span><br><span class="line">        synchronized(syncClass.class) &#123;</span><br><span class="line">            //doSomething</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同步块，锁的是 () 中的对象。每次只能有一个线程进入该代码块，此时线程获得的是成员锁。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">synMethod</span><span class="params">(<span class="keyword">int</span> arg)</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(arg) &#123;</span><br><span class="line">        <span class="comment">//doSomething</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>实现原理： JVM 是通过进入、退出对象监视器( Monitor )来实现对方法、同步块的同步的。</p>
+<p>具体实现是在编译之后在同步方法调用前加入一个 monitor.enter 指令，在退出方法和异常处插入 monitor.exit 的指令。</p>
+<p>其本质就是对一个对象监视器( Monitor )进行获取，而这个获取过程具有排他性从而达到了同一时刻只能一个线程访问的目的。</p>
+<p>而对于没有获取到锁的线程将会阻塞到方法入口处，直到获取锁的线程 monitor.exit 之后才能尝试继续获取锁。</p>
+<p>锁优化</p>
+<p>synchronized 很多都称之为重量锁，JDK1.6 中对 synchronized 进行了各种优化，为了能减少获取和释放锁带来的消耗引入了偏向锁和轻量锁。</p>
+<h2 id="volatile-java关键字"><a href="#volatile-java关键字" class="headerlink" title="volatile java关键字"></a>volatile java关键字</h2><p>volatile 关键字只能保证可见性，顺序性，不能保证原子性。<br>volatile 关键字的作用是禁止指令的重排序，强制从公共堆栈中取得变量的值，而不是从线程私有的数据栈中取变量的值。<br>volatile与synchronized的区别如下：</p>
+<p>volatile 不会发生线程阻塞，而 synchronized 会发生线程阻塞。<br>volatile 只能修饰变量，而 synchronized 可以修饰方法、代码块等。<br>volatile 不能保证原子性（不能保证线程安全），而 synchronized 可以保证原子性。<br>volatile 解决的是变量在多线程之间的可见性，而 synchronized 解决的是多线程之间访问资源的同步性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">     private static volatile Singleton singleton;</span><br><span class="line"></span><br><span class="line">     private Singleton() &#123;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     public static Singleton getInstance() &#123;</span><br><span class="line">         if (singleton == null) &#123;</span><br><span class="line">             synchronized (Singleton.class) &#123;</span><br><span class="line">                 if (singleton == null) &#123;</span><br><span class="line">                     singleton = new Singleton();</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         return singleton;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="lock"><a href="#lock" class="headerlink" title="lock"></a>lock</h2><p>  synchronized是隐式锁，在需要同步的对象中加入此控制，而lock是显示锁，需要显示指定起始位置和终止位置。</p>
+<p>使用lock时在finally中必须释放锁，不然容易造成线程死锁；而使用synchronized时，获取锁的线程会在执行完同步代码后释放锁（或者JVM会在线程执行发生异常时释放锁）。<br>使用lock时线程不会一直等待；而使用synchronized时，假设A线程获得锁后阻塞，其他线程会一直等待。<br>lock可重入、可中断、可公平也可不公平；而synchronized可重入但不可中断、非公平。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">hashmap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">syschronized</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">负载因子</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lock</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容量</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">volatile</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACl0lEQVR42u3a0Y4iMQwEQP7/p9nXk1Zw3XHMcVLN02pmCK6sFAc7j0d8PX9dr56+ev/99een3o/52Ljw8PDwxqHn4U6mJgk9wf8lKjw8PLw1Xj50cieZpmQ68nhe3sfDw8P7Ml5Cyhf6HIyHh4f3//LOygRtMQIPDw/vO3ntcO12eVLsaMvEeHh4eNu8fCn/nr9X+nt4eHh44676pN2Vp5N2tCJaPDw8vAVevuDuhdWGXseJh4eHt8BrG/9nzf7333J2p4gTDw8P7xLv7FBUflDgrJ12bYOOh4eHt8BrC7V5CmmnYJJ+kmnCw8PD2+O14U4OY+XhXujs4eHh4V3itYer8qdtQSGZvrowgYeHh7fGmyeGPD3MD1cVZQs8PDy8BV4eUDsR+ba4LYIk9/Hw8PD2eAkjx08Cyv8bxVM8PDy8BV5eGpgfC2jPgj3L6+W2Gw8PD+8qrz0IdVakOEsweam3/pWAh4eHN+C1xYj5Ep93/CcNOTw8PLxP8tpFPDnGenbAK0lRxWh4eHh4V3lzWB7EvCXWbtbx8PDw7vLa1tRZKG2xuC40vBofDw8Pb4GXf2Cy+W6nrygxDKYDDw8P7y6vbXTlS3/bvqrPQeDh4eF9hHe2LZ6kgQSTvFmUcfHw8PAWePmWNC8r3DqYNcp1eHh4eGu8ZMFtF/1k4vJvbEfAw8PD+zyvLVLkI0xKunXpGQ8PD+8q71lebZP+LKlce4qHh4e3wDtbcM82ymclifaAAh4eHt5nePPSartY5+2reXEEDw8Pb4+Xd44mG9w8tbRJK6q14OHh4f1TXvvmZBLPRsPDw8P7ft6tbXeSTorUgoeHh7fGa4uqky34fGrqxICHh4d3lXf2g/9WQ+vuxv3wwsPDw0t5P9Yeac4cmiOkAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/04/16/复习笔记->并发测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">复习笔记-&gt;semaphore/countDownLatch</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS"></div> 
+<!--<div id="SOHUCS" sid="阅读笔记-&gt;同步锁synchronized"></div>  -->
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytFnM0Gz"; 
+var conf = "364b2ce85a0a34638cf8a1e4411a7d40"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +390,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -323,6 +472,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">eureka</a>
               </li>
              
@@ -343,18 +496,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
               </li>
              
@@ -363,11 +504,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
+                <a href="javascript:void(0)" class="js-tag color5">mail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -383,6 +524,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">md</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
               </li>
              
@@ -395,7 +548,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">md</a>
+                <a href="javascript:void(0)" class="js-tag color2">aliyun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">repository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -404,14 +561,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">autoconfiguration</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">aliyun</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">repository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,18 +616,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hashmap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载因子</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
               </li>
              
@@ -488,6 +625,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">volatile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hashmap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hash冲突</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扩容</a>
               </li>
             
             <div class="clearfix"></div>

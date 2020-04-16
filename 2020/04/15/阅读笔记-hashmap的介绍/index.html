@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rogchen.github.com">
-  <title>Tag: 负载因子 | Rogchen的博客</title>
+  <title>阅读笔记-&gt;map | Rogchen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
-<meta name="keywords" content="spring,springmvc,springboot,springcloud,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rogchen的博客">
-<meta property="og:url" content="https://rogchen.github.com/tags/负载因子/index.html">
+  <meta name="description" content="hashmam介绍HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket（水桶）位置来储存值对象。当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。HashMap使用链表来解决碰撞问题，当发生碰撞了，对象将会储存在链">
+<meta name="keywords" content="hashmap,hash冲突,扩容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读笔记-&gt;map">
+<meta property="og:url" content="https://rogchen.github.com/2020/04/15/阅读笔记-hashmap的介绍/index.html">
 <meta property="og:site_name" content="Rogchen的博客">
-<meta property="og:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta property="og:description" content="hashmam介绍HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket（水桶）位置来储存值对象。当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。HashMap使用链表来解决碰撞问题，当发生碰撞了，对象将会储存在链">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/hashmap.png">
+<meta property="og:updated_time" content="2020-04-15T07:20:03.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rogchen的博客">
-<meta name="twitter:description" content="广西师范大学12级，就职于易联众。擅长java开发、全栈开发，服务器维护，喜欢研究新奇东西。此为博客一枚。">
+<meta name="twitter:title" content="阅读笔记-&gt;map">
+<meta name="twitter:description" content="hashmam介绍HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket（水桶）位置来储存值对象。当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。HashMap使用链表来解决碰撞问题，当发生碰撞了，对象将会储存在链">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/hashmap.png">
   
     <link rel="alternative" href="/atom.xml" title="Rogchen的博客" type="application/atom+xml">
   
@@ -156,36 +159,95 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-阅读笔记-hashmap的介绍" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/阅读笔记-hashmap的扩容/" class="archive-article-date">
-  	<time datetime="2020-03-16T07:46:12.278Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/阅读笔记-hashmap的扩容/">阅读笔记-&gt;hashmap 的key跟扩容</a>
+    <h1 class="article-title" itemprop="name">
+      阅读笔记-&gt;map
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/04/15/阅读笔记-hashmap的介绍/" class="archive-article-date">
+  	<time datetime="2020-04-15T07:20:03.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="hashmam介绍"><a href="#hashmam介绍" class="headerlink" title="hashmam介绍"></a>hashmam介绍</h2><p>HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket（水桶）位置来储存值对象。当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。HashMap使用链表来解决碰撞问题，当发生碰撞了，对象将会储存在链表的下一个节点中。 HashMap在每个链表节点中储存键值对对象。<br>当两个不同的键对象的hashcode相同时会发生什么？ 它们会储存在同一个bucket位置的链表中。键对象的equals()方法用来找到键值对。（通俗讲：不同的key可能有相同的hashcode，当hashcode相同时候，在bucket的位置Entry(包含有键值对的Map.Entry对象)会存储在链表中,这时候通过调用key.equals()方法来查找真正需要的值。）详细可下面源码：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span>(<span class="params">K key, V <span class="keyword">value</span></span>) </span>&#123;  </span><br><span class="line">     <span class="keyword">if</span> (key == <span class="literal">null</span>)  </span><br><span class="line">         <span class="keyword">return</span> putForNullKey(<span class="keyword">value</span>);  </span><br><span class="line">     <span class="keyword">int</span> hash = hash(key.hashCode());  </span><br><span class="line">     <span class="keyword">int</span> i = indexFor(hash, table.length);  </span><br><span class="line">     <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != <span class="literal">null</span>; e = e.next) &#123;  </span><br><span class="line">         Object k;  </span><br><span class="line">         <span class="comment">//判断当前确定的索引位置是否存在相同hashcode和相同key的元素，如果存在相同的hashcode和相同的key的元素，那么新值覆盖原来的旧值，并返回旧值。  </span></span><br><span class="line">         <span class="comment">//如果存在相同的hashcode，那么他们确定的索引位置就相同，这时判断他们的key是否相同，如果不相同，这时就是产生了hash冲突。  </span></span><br><span class="line">         <span class="comment">//Hash冲突后，那么HashMap的单个bucket里存储的不是一个 Entry，而是一个 Entry 链。  </span></span><br><span class="line">         <span class="comment">//系统只能必须按顺序遍历每个 Entry，直到找到想搜索的 Entry 为止——如果恰好要搜索的 Entry 位于该 Entry 链的最末端（该 Entry 是最早放入该 bucket 中），  </span></span><br><span class="line">         <span class="comment">//那系统必须循环到最后才能找到该元素。  </span></span><br><span class="line">         <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.<span class="keyword">equals</span>(k))) &#123;  </span><br><span class="line">             V oldValue = e.<span class="keyword">value</span>;  </span><br><span class="line">             e.<span class="keyword">value</span> = <span class="keyword">value</span>;  </span><br><span class="line">             <span class="keyword">return</span> oldValue;  </span><br><span class="line">         &#125;  </span><br><span class="line">     &#125;  </span><br><span class="line">     modCount++;  </span><br><span class="line">     addEntry(hash, key, <span class="keyword">value</span>, i);  </span><br><span class="line">     <span class="keyword">return</span> <span class="literal">null</span>;  </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="hashmap数据结构"><a href="#hashmap数据结构" class="headerlink" title="hashmap数据结构"></a>hashmap数据结构</h3><p>　HashMap的底层主要是基于数组和链表来实现的，它之所以有相当快的查询速度主要是因为它是通过计算散列码来决定存储的位置。HashMap中主要是通过key的hashCode来计算hash值的，只要hashCode相同，计算出来的hash值就一样。不同的值也会出现相同的散列值（hashcode），这就是hash冲突。<br><img src="https://raw.githubusercontent.com/Rogchen/rogchen-picture/master/blog-img/readmd/hashmap.png" alt="hashcode数组存储，节点链表存储"></p>
+<p>在jdk1.8以后对hashmap进行了优化，当一个hash值上的长度大于8时，该节点就不再采用链表存储，而是使用自平衡红黑树。</p>
+<p>jdk1.7的hashmap在扩容时会因为并发导致死锁，在1.8优化了这个问题,并且使用了两个指针来分别指向头节点和尾节点，而且还保证了元素原本的顺序。</p>
+<h2 id="hasmap的扩容"><a href="#hasmap的扩容" class="headerlink" title="hasmap的扩容"></a>hasmap的扩容</h2><p>1、map-&gt;hashmap HashMap 底层是基于数组和链表实现的。其中有两个重要的参数：容量；负载因子.容量的默认大小是 16，负载因子是 0.75，当 HashMap 的 size &gt; 16*0.75 时就会发生扩容(容量和负载因子都可以自由调整)。<br>key是采用传入参数的hashcode 在进行取模运算，在参数的hash是2^n时候跟位运算是一样的，所以采用位运算来做取模。</p>
+<h2 id="初始化-构造方法"><a href="#初始化-构造方法" class="headerlink" title="初始化 构造方法"></a>初始化 构造方法</h2><p>首先，int n = cap -1是为了防止cap已经是2的幂时，执行完后面的几条无符号右移操作之后，返回的capacity是这个cap的2倍，因为cap已经是2的幂了，就已经满足条件了。 如果不懂可以往下看完几个无符号移位后再回来看。<br>比如容量是8 符合2^n次方，但是也满足了扩容。<br>所以不直接用2^n来，而是采用位运算</p>
+<a id="more"></a>
+<p>原始计算： n=n-1  -&gt;  7=8-1<br>原始值          0000 1000</p>
+<p>| n|&gt;&gt;&gt;1 右移1位  0000 0111 </p>
+<h2 id="或运算-0000-1000"><a href="#或运算-0000-1000" class="headerlink" title="|      或运算      0000 1000"></a>|      或运算      0000 1000</h2><pre><code>值         0000 1111
+</code></pre><hr>
+<p>| n|&gt;&gt;&gt;2 右移2位  0000 0011    </p>
+<h2 id="或运算-0000-1111"><a href="#或运算-0000-1111" class="headerlink" title="|       或运算      0000 1111"></a>|       或运算      0000 1111</h2><pre><code>值为   0000 1111    
+</code></pre><hr>
+<p>| n|&gt;&gt;&gt;4 右移2位  0000 0011    </p>
+<h2 id="或运算-0000-1111-1"><a href="#或运算-0000-1111-1" class="headerlink" title="|       或运算      0000 1111"></a>|       或运算      0000 1111</h2><pre><code>值为   0000 1111                
+</code></pre><hr>
+<p>| n|&gt;&gt;&gt;8 右移8位  0000 0011    </p>
+<h2 id="或运算-0000-1111-2"><a href="#或运算-0000-1111-2" class="headerlink" title="|       或运算      0000 1111"></a>|       或运算      0000 1111</h2><pre><code>值为   0000 1111    
+</code></pre><hr>
+<p>| n|&gt;&gt;&gt;16右移16位 0000 0011    </p>
+<h2 id="或运算-0000-1111-3"><a href="#或运算-0000-1111-3" class="headerlink" title="|       或运算      0000 1111"></a>|       或运算      0000 1111</h2><pre><code>值为   0000 1111                            
+</code></pre><hr>
+<h2 id="最终值为-n-n-1-gt-16-15-1-满足2-n-1"><a href="#最终值为-n-n-1-gt-16-15-1-满足2-n-1" class="headerlink" title=" 最终值为 n=n+1  -&gt; 16=15+1  满足2^n-1"></a> 最终值为 n=n+1  -&gt; 16=15+1  满足2^n-1</h2><p>首先会将传入的 Key 做 hash 运算计算出 hashcode,然后根据数组长度取模计算出在数组中的 index 下标。</p>
+<p>由于在计算中位运算比取模运算效率高的多，所以 HashMap 规定数组的长度为 2^n 。这样用 2^n - 1 做位运算与取模效果一致，并且效率还要高出许多。</p>
+<p>由于数组的长度有限，所以难免会出现不同的 Key 通过运算得到的 index 相同，这种情况可以利用链表来解决，HashMap 会在 table[index]处形成链表，采用头插法将数据插入到链表中</p>
+<h1 id="hashset"><a href="#hashset" class="headerlink" title="hashset"></a>hashset</h1><p>hashset是将hashmap整个对象当成key存储，所以hashset的key就无法重复。</p>
+<h1 id="hashTable"><a href="#hashTable" class="headerlink" title="hashTable"></a>hashTable</h1><p>线程安全但是效率低下，因为使用sychronized来保证线程安全。</p>
+<h1 id="concurrentHashmap"><a href="#concurrentHashmap" class="headerlink" title="concurrentHashmap"></a>concurrentHashmap</h1><p>这是个线程安全的hashmap，使用segment分段锁机制，首先把数据分成一段一段的存储，然后给没一段数据陪一把锁，当一个线程占用锁访问其中一段数据时，其他数据也能被其他县城访问。每个segment就是个hashmap，默认槽是16个。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span>(<span class="params">K key, V <span class="keyword">value</span></span>) </span>&#123;</span><br><span class="line">        Segment&lt;K,V&gt; s;</span><br><span class="line">        <span class="comment">//计算hash key值</span></span><br><span class="line">        <span class="keyword">int</span> hash = hash(key);</span><br><span class="line">        <span class="comment">//通过hash key值计算出存入Segment的位置</span></span><br><span class="line">        <span class="keyword">int</span> j = (hash &gt;&gt;&gt; segmentShift) &amp; segmentMask;</span><br><span class="line">        <span class="keyword">if</span> ((s = (Segment&lt;K,V&gt;)UNSAFE.getObject          </span><br><span class="line">             (segments, (j &lt;&lt; SSHIFT) + SBASE)) == <span class="literal">null</span>) </span><br><span class="line">            <span class="comment">//初始化Segment</span></span><br><span class="line">            s = ensureSegment(j);</span><br><span class="line">         <span class="comment">//添加</span></span><br><span class="line">        <span class="keyword">return</span> s.put(key, hash, <span class="keyword">value</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在jdk8以后版本抛弃了segment的设计，采用了轻便的Node+cas+sychronized设置，保证县城安全。在节点大于某个临界值会转换成红黑树。<br><b>总结：</b><br>1、get方法不加锁；<br>2、put、remove方法要使用锁<br>jdk7使用锁分离机制(Segment分段加锁)<br>jdk8使用cas + synchronized 实现锁操作<br>3、Iterator对象的使用，运行一边更新，一遍遍历(可以根据原理自己拓展)<br>4、复合操作，无法保证线程安全，需要额外加锁保证</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -195,29 +257,133 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">负载因子</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hash冲突</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容量</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">扩容</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACxElEQVR42u3aQW7cMAwF0Ln/pVugqwLtOP+TUjKL59Vg4th6CiAyJF+v+Pr15/r387tv/v4+uZ5/9/ktBy48PDy80dKfX/z86Hf3v9uIZKHPTys2Cw8PD+8ar31BDssXlweGZM14eHh4n8B7Ziep9ixFzgMVHh4e3qfxTh3x7dLx8PDwPpOXFCPa8DBL1mcB6UCtBQ8PD6/rNw0bYD/1+Zv6e3h4eHiL1n5eaMgT7jw8DFeLh4eHd4F3aogqL7+2TbLZ/a+8loyHh4dX8mYFiOTIzhtgbTGieAIeHh7eNd7sX/0kJMxGE5KtjEIRHh4e3gXe5nCf8WYFiFkzDA8PD+8Gbz8gNRuNyrdp1dnDw8PDu8DbFFuT7zdv3/+p8PDw8O7x8jZYS5rdkwwE1GUUPDw8vEO8PBjMeLPAsxloeNsAw8PDwzvE2yS+m/HTzSZu0nc8PDy8U7y2uJDcnzwhT8GT5xS1Fjw8PLxDvLxllcwjzIoImwIHHh4e3vfw8rZ9ftCfHcbK7//PW/Dw8PCu8Z6P4FlBtg0/bVE4+ikeHh7eNd4syZ4VdvfBowgbeHh4eBd47fm5KcvmbbCW8UU4wcPDwzvKy1+QH+h5waJ9e56+4+Hh4d3jnWo+nWqVJX+AvGiCh4eHd4OXp7B5Mj079PPyR5Ksv9oMHQ8PD6/kzRaXb1MeBmYxrZiMwMPDw1vzTg0/zTYlH1CIRqyS8ICHh4e35uULmjWu2jZYXjKOUm08PDy8y7w8LU7Ku/um2mbri0wfDw8Pb14jrYsCz8WFWRjIl54HLTw8PLwbvLz8uhlFbTcuH1z4YrV4eHh413jt4FTbjpq1zWb4Iqbh4eHhXea1DbDZsd6u7Yvv8fDw8D6AFx3HZausTc2LLcbDw8O7xpu1//MC7qz4mwQePDw8vO/nzQab2gO6Lr+W27q68PDw8FLebzRlIhZrO8JkAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/04/16/复习笔记->并发测试/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          复习笔记-&gt;semaphore/countDownLatch
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/04/10/复习笔记->redis学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS"></div> 
+<!--<div id="SOHUCS" sid="阅读笔记-hashmap的介绍"></div>  -->
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytFnM0Gz"; 
+var conf = "364b2ce85a0a34638cf8a1e4411a7d40"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +407,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -323,6 +489,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">eureka</a>
               </li>
              
@@ -343,18 +513,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mail</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ls -l</a>
               </li>
              
@@ -363,11 +521,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
+                <a href="javascript:void(0)" class="js-tag color5">mail</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -383,6 +541,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v2ray</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">翻墙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">md</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
               </li>
              
@@ -395,7 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">md</a>
+                <a href="javascript:void(0)" class="js-tag color2">aliyun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">repository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -404,14 +578,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">autoconfiguration</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">aliyun</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">repository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,18 +633,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hashmap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载因子</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">syschronized</a>
               </li>
              
@@ -488,6 +642,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">volatile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hashmap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hash冲突</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扩容</a>
               </li>
             
             <div class="clearfix"></div>
